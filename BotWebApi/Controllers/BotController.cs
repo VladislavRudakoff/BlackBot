@@ -1,14 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace BotWebApi.Controllers
+namespace Bot.WebApi.Controllers
 {
     /// <summary>
-    /// Контроллер для 
+    /// Контроллер для бота. 
     /// </summary>
     [ApiController]
     [Route("[controller]")]
     public class BotController : Controller
     {
-        
     }
 }
