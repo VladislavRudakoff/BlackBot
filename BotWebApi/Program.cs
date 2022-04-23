@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace BotWebApi
+namespace Bot.WebApi
 {
     public class Program
     {
