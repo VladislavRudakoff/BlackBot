@@ -6,7 +6,7 @@
     public enum Buttons
     {
         /// <summary>
-        /// Кнока с ссылкой.
+        /// Кнопка с ссылкой.
         /// </summary>
         Link = 1,
 
@@ -29,6 +29,11 @@
         /// <summary>
         /// Кнопка-изменение.
         /// </summary>
-        CallbackChange = 5
+        CallbackChange = 5,
+
+        /// <summary>
+        /// Кнопка на клавиатуре.
+        /// </summary>
+        KeyboardsButton = 6
     }
 }
