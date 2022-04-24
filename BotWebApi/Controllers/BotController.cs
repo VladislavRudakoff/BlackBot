@@ -6,8 +6,9 @@ namespace Bot.WebApi.Controllers
     /// Контроллер для бота. 
     /// </summary>
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class BotController : Controller
     {
+        
     }
 }
