@@ -26,6 +26,11 @@ namespace Bot.Data.Enums
         /// <summary>
         /// Админ.
         /// </summary>
-        Admin = 1 << 2
+        Admin = 1 << 2,
+
+        /// <summary>
+        /// Суперпользователь.
+        /// </summary>
+        SuperUser = 1 << 3
     }
 }
