@@ -6,7 +6,7 @@ namespace Bot.WebApi.Controllers
     /// Контроллер для работы с пользователями.
     /// </summary>
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class UserController: Controller
     {
 
