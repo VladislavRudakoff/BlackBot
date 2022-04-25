@@ -1,52 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Bot.Data.Enums;
 using Bot.Data.Models;
+using Bot.Logic.Context;
 using Bot.Logic.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Bot.Logic.Services
+namespace Bot.Logic.Services;
+
+public class UserProvider: IUserProvider
 {
-    public class UserProvider: IUserProvider
+
+    private readonly BotContext context;
+
+    /// <summary>
+    /// ctor.
+    /// </summary>
+    /// <param name="context">Контекст БД.</param>
+    public UserProvider(BotContext context)
     {
-
-        private readonly DbContext context;
-
-        /// <summary>
-        /// ctor.
-        /// </summary>
-        /// <param name="context">Контекст БД.</param>
-        public UserProvider(DbContext context)
-        {
-            this.context = context;
-        }
-
-        public Task<IEnumerable<User>> GetAllUsers(CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IEnumerable<User>> GetUsersByFilter(Expression<Func<User, bool>> filter, CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<User> GetOneUserByFilter(Expression<Func<User, bool>> filter, CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<Role> GetUserRoles(Expression<Func<User, bool>> filter, CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<User> GetUserById(long userId, CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
-        }
+        this.context = context;
     }
+
+    /// <inheritdoc />
+    public async Task<IEnumerable<User>> GetAllUsers(CancellationToken cancellationToken = default) => 
+        await context.Users.ToListAsync(cancellationToken);
+
+    /// <inheritdoc />
+    public async Task<IEnumerable<User>> GetUsersByFilter(Expression<Func<User, bool>> filter, CancellationToken cancellationToken = default) => 
+        await context.Users.Where(filter).ToListAsync(cancellationToken);
+
+    /// <inheritdoc />
+    public async Task<User?> GetOneUserByFilter(Expression<Func<User, bool>> filter, CancellationToken cancellationToken = default) => 
+        await context.Users.SingleOrDefaultAsync(filter, cancellationToken);
+
+    /// <inheritdoc />
+    public async Task<Role?> GetUserRoles(long userId, CancellationToken cancellationToken = default) =>
+        await context.Users
+            .Where(x => x.Id == userId)
+            .Select(x => x.Role)
+            .FirstOrDefaultAsync(cancellationToken);
+
+    /// <inheritdoc />
+    public async Task<User?> GetUserById(long userId, CancellationToken cancellationToken = default) => 
+        await context.Users.FirstOrDefaultAsync(x => x.Id == userId, cancellationToken);
 }
