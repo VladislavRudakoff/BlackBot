@@ -1,13 +1,12 @@
 ﻿using Bot.Data.Enums;
 
-namespace Bot.Data.Models
-{
-    /// <summary>
-    /// Пользователь.
-    /// </summary>
-    /// <param name="Id">Идентификатор пользователя.</param>
-    /// <param name="FullName">Полное имя пользователя.</param>
-    /// <param name="Username">Юзернейм пользователя.</param>
-    /// <param name="Role">Роль пользователя.</param>
-    public record User(int Id, string FullName, string Username, Role Role);
-}
+namespace Bot.Data.Models;
+
+/// <summary>
+/// Пользователь.
+/// </summary>
+/// <param name="Id">Идентификатор пользователя.</param>
+/// <param name="FullName">Полное имя пользователя.</param>
+/// <param name="Username">Юзернейм пользователя.</param>
+/// <param name="Role">Роль пользователя.</param>
+public record User(int Id, string FullName, string Username, Role Role);

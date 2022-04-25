@@ -1,15 +1,14 @@
-﻿namespace Bot.Data.Enums
-{
-    public enum LinkText
-    {
-        /// <summary>
-        /// Ссылка.
-        /// </summary>
-        Link = 1,
+﻿namespace Bot.Data.Enums;
 
-        /// <summary>
-        /// Упоминание пользователя.
-        /// </summary>
-        UserMention = 2
-    }
+public enum LinkText
+{
+    /// <summary>
+    /// Ссылка.
+    /// </summary>
+    Link = 1,
+
+    /// <summary>
+    /// Упоминание пользователя.
+    /// </summary>
+    UserMention = 2
 }

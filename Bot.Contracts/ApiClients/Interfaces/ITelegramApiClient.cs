@@ -1,9 +1,8 @@
-﻿namespace Bot.Contracts.ApiClients.Interfaces
+﻿namespace Bot.Contracts.ApiClients.Interfaces;
+
+/// <summary>
+/// Клиент Telegram API.
+/// </summary>
+public interface ITelegramApiClient
 {
-    /// <summary>
-    /// Клиент Telegram API.
-    /// </summary>
-    public interface ITelegramApiClient
-    {
-    }
 }
