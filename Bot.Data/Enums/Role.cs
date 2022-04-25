@@ -1,36 +1,35 @@
 ﻿using System;
 
-namespace Bot.Data.Enums
+namespace Bot.Data.Enums;
+
+/// <summary>
+/// Роли.
+/// </summary>
+[Flags]
+public enum Role
 {
     /// <summary>
-    /// Роли.
+    /// Не определено.
     /// </summary>
-    [Flags]
-    public enum Role
-    {
-        /// <summary>
-        /// Не определено.
-        /// </summary>
-        None = 0 << 0,
+    None = 0 << 0,
 
-        /// <summary>
-        /// Пользователь.
-        /// </summary>
-        User = 1 << 0,
+    /// <summary>
+    /// Пользователь.
+    /// </summary>
+    User = 1 << 0,
 
-        /// <summary>
-        /// Модератор.
-        /// </summary>
-        Moderator = 1 << 1,
+    /// <summary>
+    /// Модератор.
+    /// </summary>
+    Moderator = 1 << 1,
 
-        /// <summary>
-        /// Админ.
-        /// </summary>
-        Admin = 1 << 2,
+    /// <summary>
+    /// Админ.
+    /// </summary>
+    Admin = 1 << 2,
 
-        /// <summary>
-        /// Суперпользователь.
-        /// </summary>
-        SuperUser = 1 << 3
-    }
+    /// <summary>
+    /// Суперпользователь.
+    /// </summary>
+    SuperUser = 1 << 3
 }
