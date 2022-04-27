@@ -1,9 +1,9 @@
 ﻿namespace Bot.Data.Enums;
 
 /// <summary>
-/// Кнопки.
+/// Тип кнопки.
 /// </summary>
-public enum Buttons
+public enum ButtonType
 {
     /// <summary>
     /// Кнопка с ссылкой.

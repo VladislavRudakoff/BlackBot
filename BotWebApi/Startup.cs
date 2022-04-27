@@ -1,4 +1,5 @@
 using Bot.Logic.Context;
+using Bot.Logic.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -24,6 +25,8 @@ public class Startup
 
         services.AddDbContext<BotContext>(opt =>
                 opt.UseNpgsql(Configuration.GetConnectionString("PostgreSQL")));
+
+        services.AddServices();
 
         services.AddSwaggerGen(c =>
         {
