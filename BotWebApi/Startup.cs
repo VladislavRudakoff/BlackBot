@@ -1,3 +1,4 @@
+using System.Reflection;
 using Bot.Logic.Context;
 using Bot.Logic.Extensions;
 using Microsoft.AspNetCore.Builder;
@@ -27,6 +28,8 @@ public class Startup
                 opt.UseNpgsql(Configuration.GetConnectionString("PostgreSQL")));
 
         services.AddServices();
+
+        services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
         services.AddSwaggerGen(c =>
         {
