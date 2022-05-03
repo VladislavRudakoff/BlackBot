@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 using Bot.Data.Enums;
 using Bot.Data.Models;
 using Bot.Logic.Context;
-using Bot.Logic.Services.Interfaces;
+using Bot.Logic.Providers.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace Bot.Logic.Services;
+namespace Bot.Logic.Providers;
 
 public class UserProvider: IUserProvider
 {
