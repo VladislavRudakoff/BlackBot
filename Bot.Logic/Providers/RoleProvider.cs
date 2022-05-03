@@ -3,9 +3,10 @@ using System.Threading;
 using System.Threading.Tasks;
 using Bot.Data.Enums;
 using Bot.Logic.Context;
+using Bot.Logic.Providers.Interfaces;
 using Bot.Logic.Services.Interfaces;
 
-namespace Bot.Logic.Services;
+namespace Bot.Logic.Providers;
 
 public class RoleProvider: IRoleProvider
 {

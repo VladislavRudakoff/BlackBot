@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Bot.Data.Enums;
 using Bot.Data.Models;
 
-namespace Bot.Logic.Services.Interfaces;
+namespace Bot.Logic.Providers.Interfaces;
 
 /// <summary>
 /// Сервис для получения пользователей.
@@ -21,15 +21,17 @@ public interface IUserProvider
     Task<IEnumerable<User>> GetAllUsers(CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Получает пользователей по фильтру.
+    /// Получает пользователей по фильтру. <br/>
+    /// <strong>Пока не используется.</strong>
     /// </summary>
     /// <param name="filter">Фильтр.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
     /// <returns>Список отфильтрованных пользователей.</returns>
     Task<IEnumerable<User>> GetUsersByFilter(Expression<Func<User, bool>> filter, CancellationToken cancellationToken = default);
-        
+
     /// <summary>
-    /// Получает пользователей по фильтру.
+    /// Получает пользователей по фильтру.<br/>
+    /// <strong>Пока не используется.</strong>
     /// </summary>
     /// <param name="filter">Фильтр.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>

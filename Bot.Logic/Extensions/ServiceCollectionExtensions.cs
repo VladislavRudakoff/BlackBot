@@ -1,4 +1,6 @@
-﻿using Bot.Logic.Services;
+﻿using Bot.Logic.Providers;
+using Bot.Logic.Providers.Interfaces;
+using Bot.Logic.Services;
 using Bot.Logic.Services.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 

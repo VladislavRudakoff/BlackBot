@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Bot.Data.Enums;
 
-namespace Bot.Logic.Services.Interfaces;
+namespace Bot.Logic.Providers.Interfaces;
 
 /// <summary>
 /// Сервис для получения ролей.
