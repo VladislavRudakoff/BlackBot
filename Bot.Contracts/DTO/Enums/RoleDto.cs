@@ -1,15 +1,15 @@
 ﻿using System;
 
-namespace Bot.Data.Enums;
+namespace Bot.Contracts.DTO.Enums;
 
 /// <summary>
-/// Роли.
+/// Dto перечисление ролей.
 /// </summary>
 [Flags]
-public enum Role
+public enum RoleDto
 {
     /// <summary>
-    /// Без роли.
+    /// Не определено.
     /// </summary>
     None = 0 << 0,
 
