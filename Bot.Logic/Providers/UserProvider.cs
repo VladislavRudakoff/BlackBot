@@ -39,13 +39,18 @@ public class UserProvider: IUserProvider
         await context.Users.SingleOrDefaultAsync(filter, cancellationToken);
 
     /// <inheritdoc />
-    public async Task<Role?> GetUserRoles(long userId, CancellationToken cancellationToken = default) =>
+    public async Task<Role> GetUserRoles(long userId, CancellationToken cancellationToken = default) =>
         await context.Users
             .Where(x => x.Id == userId)
             .Select(x => x.Role)
-            .FirstOrDefaultAsync(cancellationToken);
+            .FirstAsync(cancellationToken);
 
     /// <inheritdoc />
     public async Task<User?> GetUserById(long userId, CancellationToken cancellationToken = default) => 
         await context.Users.FirstOrDefaultAsync(x => x.Id == userId, cancellationToken);
+
+    public Task<User?> GetUserByUsername(string username, CancellationToken cancellationToken = default) =>
+        context.Users
+            .Where(x => x.Username == username)
+            .FirstOrDefaultAsync(cancellationToken);
 }

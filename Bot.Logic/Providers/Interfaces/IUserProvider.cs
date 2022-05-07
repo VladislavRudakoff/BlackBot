@@ -30,12 +30,12 @@ public interface IUserProvider
     Task<IEnumerable<User>> GetUsersByFilter(Expression<Func<User, bool>> filter, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Получает пользователей по фильтру.<br/>
+    /// Получает пользователя по фильтру.<br/>
     /// <strong>Пока не используется.</strong>
     /// </summary>
     /// <param name="filter">Фильтр.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns><see cref="User"/>.</returns>
+    /// <returns>Пользователь, полученный по фильтру.</returns>
     Task<User?> GetOneUserByFilter(Expression<Func<User, bool>> filter, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -44,13 +44,21 @@ public interface IUserProvider
     /// <param name="userId">Идентификатор пользователя.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
     /// <returns>Роли пользователя.</returns>
-    Task<Role?> GetUserRoles(long userId, CancellationToken cancellationToken = default);
+    Task<Role> GetUserRoles(long userId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Получает пользователя по идентификатору.
     /// </summary>
     /// <param name="userId">Идентификатор пользователя.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns><see cref="User"/>.</returns>
+    /// <returns>Пользователь, найденный по идентификатору.</returns>
     Task<User?> GetUserById(long userId, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Получает пользователя по юзернейму.
+    /// </summary>
+    /// <param name="username">Юзернейм пользователя.</param>
+    /// <param name="cancellationToken">Маркер отмены.</param>
+    /// <returns>Пользователь, найденный по юзернейму.</returns>
+    Task<User?> GetUserByUsername(string username, CancellationToken cancellationToken = default);
 }
