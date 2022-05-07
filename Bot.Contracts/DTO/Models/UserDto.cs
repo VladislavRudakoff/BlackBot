@@ -1,6 +1,6 @@
 ﻿using Bot.Data.Enums;
 
-namespace Bot.Contracts.DTO;
+namespace Bot.Contracts.DTO.Models;
 
 /// <summary>
 /// DTO-модель пользователя.

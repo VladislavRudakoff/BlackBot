@@ -1,7 +1,9 @@
-﻿using Bot.Logic.Providers;
+﻿using Bot.Data.Settings;
+using Bot.Logic.Providers;
 using Bot.Logic.Providers.Interfaces;
 using Bot.Logic.Services;
 using Bot.Logic.Services.Interfaces;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Bot.Logic.Extensions;
@@ -21,4 +23,12 @@ public static class ServiceCollectionExtensions
             .AddScoped<IRoleProvider, RoleProvider>()
             .AddScoped<IUserProvider, UserProvider>()
             .AddScoped<ITextDecorator, TextDecorator>();
+
+    public static IServiceCollection AddFactories(this IServiceCollection service) =>
+        service
+            .AddScoped<ICachingPolicyFactory, CachingPolicyFactory>();
+
+    public static IServiceCollection AddSettings(this IServiceCollection service, IConfiguration config) =>
+        service
+            .AddConfigAsSingleton<CachingSettings>(config);
 }

@@ -27,7 +27,13 @@ public class Startup
         services.AddDbContext<BotContext>(opt =>
                 opt.UseNpgsql(Configuration.GetConnectionString("PostgreSQL")));
 
+        AddCache(services);
+
+        services.AddSettings(Configuration);
+
         services.AddServices();
+
+        services.AddFactories();
 
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
@@ -39,7 +45,7 @@ public class Startup
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
-        if (env.IsProduction())
+        if (env.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
             app.UseSwagger();
@@ -55,6 +61,15 @@ public class Startup
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();
+        });
+    }
+
+    private void AddCache(IServiceCollection service)
+    {
+        service.AddStackExchangeRedisCache(options =>
+        {
+            options.Configuration = Configuration.GetConnectionString("Redis");
+            options.InstanceName = "BotApp";
         });
     }
 }
