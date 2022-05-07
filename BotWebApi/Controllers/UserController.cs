@@ -2,9 +2,7 @@
 using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
-using Bot.Contracts.DTO.Enums;
-using Bot.Contracts.DTO.Models;
-using Bot.Data.Enums;
+using Bot.Contracts.DTO;
 using Bot.Data.Models;
 using Bot.Logic.Providers.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -51,49 +49,16 @@ public class UserController: Controller
     /// <param name="userId">Идентификатор пользователя.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
     /// <returns>Пользователь с нужным идентификатором.</returns>
-    [HttpGet("{userId:int}")]
+    [HttpGet("Users/{userId}")]
     public async Task<ActionResult<UserDto>> GetUsersById(int userId, CancellationToken cancellationToken = default)
     {
-        User? user = await userProvider.GetUserById(userId, cancellationToken);
+        User? currentUser = await userProvider.GetUserById(userId, cancellationToken);
 
-        if (user is null)
+        if (currentUser is null)
         {
             return NotFound();
         }
 
-        return mapper.Map<UserDto>(user);
-    }
-
-    /// <summary>
-    /// Возвращает все роли по идентификатору пользователя.
-    /// </summary>
-    /// <param name="userId">Идентификатор пользователя.</param>
-    /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns>Роли пользователя.</returns>
-    [HttpGet("{userId}/role")]
-    public async Task<RoleDto> GetUserRoles(long userId, CancellationToken cancellationToken = default)
-    {
-        Role userRole = await userProvider.GetUserRoles(userId, cancellationToken);
-
-        return mapper.Map<RoleDto>(userRole);
-    }
-
-    /// <summary>
-    /// Возвращает пользователя по юзернейму.
-    /// </summary>
-    /// <param name="username">Юзернейм пользователя.</param>
-    /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns>Пользователь, полученный по юзернейму.</returns>
-    [HttpGet("{username}")]
-    public async Task<ActionResult<UserDto?>> GetUserByUsername(string username, CancellationToken cancellationToken = default)
-    {
-        User? user = await userProvider.GetUserByUsername(username, cancellationToken);
-
-        if (user is null)
-        {
-            return NotFound();
-        }
-
-        return mapper.Map<UserDto>(user);
+        return mapper.Map<UserDto>(currentUser);
     }
 }
