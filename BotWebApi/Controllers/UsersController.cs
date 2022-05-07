@@ -16,7 +16,7 @@ namespace Bot.WebApi.Controllers;
 /// </summary>
 [ApiController]
 [Route("api/[controller]")]
-public class UserController : Controller
+public class UsersController : Controller
 {
     private readonly IUserProvider userProvider;
     private readonly IMapper mapper;
@@ -26,7 +26,7 @@ public class UserController : Controller
     /// </summary>
     /// <param name="userProvider"><see cref="IUserProvider"/>.</param>
     /// <param name="mapper"><see cref="IMapper"/></param>
-    public UserController(IUserProvider userProvider, IMapper mapper)
+    public UsersController(IUserProvider userProvider, IMapper mapper)
     {
         this.userProvider = userProvider;
         this.mapper = mapper;
