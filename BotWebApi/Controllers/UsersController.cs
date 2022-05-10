@@ -71,11 +71,11 @@ public class UsersController : Controller
     /// <param name="cancellationToken">Маркер отмены.</param>
     /// <returns>Роли пользователя.</returns>
     [HttpGet("{userId}/role")]
-    public async Task<RoleDto> GetUserRoles(long userId, CancellationToken cancellationToken = default)
+    public async Task<RolesDto> GetUserRoles(long userId, CancellationToken cancellationToken = default)
     {
-        Role userRole = await userProvider.GetUserRoles(userId, cancellationToken);
+        Roles userRole = await userProvider.GetUserRoles(userId, cancellationToken);
 
-        return mapper.Map<RoleDto>(userRole);
+        return mapper.Map<RolesDto>(userRole);
     }
 
     /// <summary>
@@ -85,8 +85,7 @@ public class UsersController : Controller
     /// <param name="cancellationToken">Маркер отмены.</param>
     /// <returns>Пользователь, полученный по юзернейму.</returns>
     [HttpGet("{username}")]
-    public async Task<ActionResult<UserDto?>> GetUserByUsername(string username,
-        CancellationToken cancellationToken = default)
+    public async Task<ActionResult<UserDto?>> GetUserByUsername(string username, CancellationToken cancellationToken = default)
     {
         User? user = await userProvider.GetUserByUsername(username, cancellationToken);
 
