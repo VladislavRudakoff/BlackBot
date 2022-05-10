@@ -44,7 +44,7 @@ public interface IUserProvider
     /// <param name="userId">Идентификатор пользователя.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
     /// <returns>Роли пользователя.</returns>
-    Task<Role> GetUserRoles(long userId, CancellationToken cancellationToken = default);
+    Task<Roles> GetUserRoles(long userId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Получает пользователя по идентификатору.
