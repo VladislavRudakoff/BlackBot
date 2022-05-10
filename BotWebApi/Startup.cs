@@ -1,5 +1,5 @@
 using System.Reflection;
-using Bot.Logic.Context;
+using Bot.Logic.AppContext;
 using Bot.Logic.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -24,10 +24,12 @@ public class Startup
     {
         services.AddControllers();
 
+        services.AddOptions();
+
         services.AddDbContext<BotContext>(opt =>
                 opt.UseNpgsql(Configuration.GetConnectionString("PostgreSQL")));
 
-        AddCache(services);
+        services.AddCache(Configuration);
 
         services.AddSettings(Configuration);
 
@@ -61,15 +63,6 @@ public class Startup
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();
-        });
-    }
-
-    private void AddCache(IServiceCollection service)
-    {
-        service.AddStackExchangeRedisCache(options =>
-        {
-            options.Configuration = Configuration.GetConnectionString("Redis");
-            options.InstanceName = "BotApp";
         });
     }
 }

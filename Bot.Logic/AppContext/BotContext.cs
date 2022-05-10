@@ -1,7 +1,7 @@
 ﻿using Bot.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Bot.Logic.Context;
+namespace Bot.Logic.AppContext;
 
 public class BotContext: DbContext
 {

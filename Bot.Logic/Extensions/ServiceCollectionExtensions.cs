@@ -16,19 +16,42 @@ public static class ServiceCollectionExtensions
     /// <summary>
     /// Регистрирует все сервисы бота.
     /// </summary>
-    /// <param name="service"></param>
+    /// <param name="service"><see cref="IServiceCollection"/>.</param>
     /// <returns></returns>
     public static IServiceCollection AddServices(this IServiceCollection service) =>
         service
-            .AddScoped<IRoleProvider, RoleProvider>()
             .AddScoped<IUserProvider, UserProvider>()
             .AddScoped<ITextDecorator, TextDecorator>();
 
+    /// <summary>
+    /// Регистрирует кэш.
+    /// </summary>
+    /// <param name="service"><see cref="IServiceCollection"/>.</param>
+    /// <param name="config"><see cref="IConfiguration"/>.</param>
+    /// <returns></returns>
+    public static IServiceCollection AddCache(this IServiceCollection service, IConfiguration config) =>
+        service
+            .AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = config.GetConnectionString("Redis");
+                options.InstanceName = "BotApp.";
+            });
+
+    /// <summary>
+    /// Регистрирует все фабрики.
+    /// </summary>
+    /// <param name="service"><see cref="IServiceCollection"/>.</param>
+    /// <returns></returns>
     public static IServiceCollection AddFactories(this IServiceCollection service) =>
         service
             .AddScoped<ICachingPolicyFactory, CachingPolicyFactory>();
 
-    public static IServiceCollection AddSettings(this IServiceCollection service, IConfiguration config) =>
-        service
-            .AddConfigAsSingleton<CachingSettings>(config);
+    /// <summary>
+    /// Регистрирует все настройки.
+    /// </summary>
+    /// <param name="service"><see cref="IServiceCollection"/>.</param>
+    /// <param name="config"><see cref="IConfiguration"/>.</param>
+    /// <returns></returns>
+    public static IServiceCollection AddSettings(this IServiceCollection service, IConfiguration config) => 
+        service.AddConfigAsSingleton<CachingSettings>(config);
 }

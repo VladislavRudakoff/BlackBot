@@ -1,5 +1,4 @@
-﻿using System;
-using Bot.Data.Settings;
+﻿using Bot.Data.Settings;
 using Bot.Logic.Services.Interfaces;
 using Microsoft.Extensions.Caching.Distributed;
 using Newtonsoft.Json;
@@ -29,7 +28,8 @@ public class CachingPolicyFactory: ICachingPolicyFactory
         this.distributedCache = distributedCache;
     }
 
+    /// <inheritdoc />
     public AsyncCachePolicy<T> CreateAsyncCachePolicy<T>() =>
         Policy.CacheAsync(distributedCache.AsAsyncCacheProvider<string>()
-            .WithSerializer(new JsonSerializer<T>(new JsonSerializerSettings())), cachingSettings.CacheTtl);
+            .WithSerializer(new JsonSerializer<T>(new JsonSerializerSettings())), new SlidingTtl(cachingSettings.CacheTtl));
 }
