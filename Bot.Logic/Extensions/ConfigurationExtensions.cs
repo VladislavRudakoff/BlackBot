@@ -16,11 +16,9 @@ public static class ConfigurationExtensions
     /// <returns>Конфигурация.</returns>
     public static T BindConfig<T>(this IConfiguration configuration) where T: new()
     {
-        T instance = new T();
-
-        configuration
+        T instance = configuration
             .GetSection(typeof(T).Name)
-            .Bind(new T());
+            .Get<T>();
 
         return instance;
     }
