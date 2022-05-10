@@ -9,4 +9,4 @@ namespace Bot.Contracts.DTO.Models;
 /// <param name="FullName">Полное имя пользователя.</param>
 /// <param name="Username">Юзернейм пользователя.</param>
 /// <param name="Role">Роль пользователя.</param>
-public record UserDto(int Id, string FullName, string Username, Role Role);
+public record UserDto(int Id, string FullName, string Username, Roles Role);

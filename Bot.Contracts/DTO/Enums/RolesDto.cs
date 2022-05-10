@@ -1,15 +1,18 @@
 ﻿using System;
+using System.Text.Json.Serialization;
+using Bot.Contracts.Services;
 
-namespace Bot.Data.Enums;
+namespace Bot.Contracts.DTO.Enums;
 
 /// <summary>
-/// Роли.
+/// Dto перечисление ролей.
 /// </summary>
+[JsonConverter(typeof(FlagConverter))]
 [Flags]
-public enum Role
+public enum RolesDto
 {
     /// <summary>
-    /// Без роли.
+    /// Не определено.
     /// </summary>
     None = 0 << 0,
 
