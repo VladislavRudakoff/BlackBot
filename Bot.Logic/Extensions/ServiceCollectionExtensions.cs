@@ -1,4 +1,5 @@
-﻿using Bot.Data.Settings;
+﻿using Bot.Common.Extensions;
+using Bot.Data.Settings;
 using Bot.Logic.Providers;
 using Bot.Logic.Providers.Interfaces;
 using Bot.Logic.Services;
@@ -20,8 +21,7 @@ public static class ServiceCollectionExtensions
     /// <returns></returns>
     public static IServiceCollection AddServices(this IServiceCollection service) =>
         service
-            .AddScoped<IUserProvider, UserProvider>()
-            .AddScoped<ITextDecorator, TextDecorator>();
+            .AddScoped<IUserProvider, UserProvider>();
 
     /// <summary>
     /// Регистрирует кэш.
@@ -52,6 +52,8 @@ public static class ServiceCollectionExtensions
     /// <param name="service"><see cref="IServiceCollection"/>.</param>
     /// <param name="config"><see cref="IConfiguration"/>.</param>
     /// <returns></returns>
-    public static IServiceCollection AddSettings(this IServiceCollection service, IConfiguration config) => 
-        service.AddConfigAsSingleton<CachingSettings>(config);
+    public static IServiceCollection AddSettings(this IServiceCollection service, IConfiguration config) =>
+        service
+            .AddConfigAsSingleton<CachingSettings>(config)
+            .AddConfigAsSingleton<TelegramClientSettings>(config);
 }

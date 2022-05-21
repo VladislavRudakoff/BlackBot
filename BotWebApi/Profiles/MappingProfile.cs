@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Bot.Contracts.DTO.Enums;
-using Bot.Contracts.DTO.Models;
-using Bot.Data.Enums;
-using Bot.Data.Models;
+using Bot.Contracts.DTOs.Enums;
+using Bot.Contracts.DTOs.Models;
+using Bot.Data.DboModels;
+using Bot.Data.StandartEnum;
 
 namespace Bot.WebApi.Profiles;
 
@@ -10,7 +10,7 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
-        CreateMap<UserDto, User>().ReverseMap();
+        CreateMap<UserDto, UserDbo>().ReverseMap();
         CreateMap<RolesDto, Roles>().ReverseMap();
     }
 }
