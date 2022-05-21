@@ -1,4 +1,5 @@
-﻿using Bot.Data.Models;
+﻿using Bot.Data.DboModels;
+using Bot.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Bot.Logic.AppContext;
@@ -8,7 +9,7 @@ public class BotContext: DbContext
     /// <summary>
     /// Пользователи.
     /// </summary>
-    public DbSet<User> Users { get; set; } = null!;
+    public DbSet<UserDbo> Users { get; set; } = null!;
 
     public BotContext(DbContextOptions<BotContext> options)
         :base(options)
@@ -17,7 +18,7 @@ public class BotContext: DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<User>(u =>
+        modelBuilder.Entity<UserDbo>(u =>
         {
             u.Property(p => p.Id).UseIdentityAlwaysColumn().IsRequired();
 

@@ -1,13 +1,14 @@
 ﻿using AutoMapper;
-using Bot.Contracts.DTO.Enums;
-using Bot.Contracts.DTO.Models;
-using Bot.Data.Enums;
 using Bot.Data.Models;
 using Bot.Logic.Providers.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using Bot.Contracts.DTOs.Enums;
+using Bot.Contracts.DTOs.Models;
+using Bot.Data.DboModels;
+using Bot.Data.StandartEnum;
 
 namespace Bot.WebApi.Controllers;
 
@@ -40,7 +41,7 @@ public class UsersController : Controller
     [HttpGet]
     public async Task<IEnumerable<UserDto>> GetAllUsers(CancellationToken cancellationToken = default)
     {
-        IEnumerable<User> users = await userProvider.GetAllUsers(cancellationToken);
+        IEnumerable<UserDbo> users = await userProvider.GetAllUsers(cancellationToken);
 
         return mapper.Map<IEnumerable<UserDto>>(users);
     }
@@ -54,7 +55,7 @@ public class UsersController : Controller
     [HttpGet("{userId:int}")]
     public async Task<ActionResult<UserDto>> GetUsersById(int userId, CancellationToken cancellationToken = default)
     {
-        User? user = await userProvider.GetUserById(userId, cancellationToken);
+        UserDbo? user = await userProvider.GetUserById(userId, cancellationToken);
 
         if (user is null)
         {
@@ -87,7 +88,7 @@ public class UsersController : Controller
     [HttpGet("{username}")]
     public async Task<ActionResult<UserDto?>> GetUserByUsername(string username, CancellationToken cancellationToken = default)
     {
-        User? user = await userProvider.GetUserByUsername(username, cancellationToken);
+        UserDbo? user = await userProvider.GetUserByUsername(username, cancellationToken);
 
         if (user is null)
         {

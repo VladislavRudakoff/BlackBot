@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Bot.Data.Enums;
-using Bot.Data.Models;
+using Bot.Data.DboModels;
+using Bot.Data.StandartEnum;
 
 namespace Bot.Logic.Providers.Interfaces;
 
@@ -18,7 +18,7 @@ public interface IUserProvider
     /// </summary>
     /// <param name="cancellationToken">Маркер отмены.</param>
     /// <returns>Список всех пользователей.</returns>
-    Task<IEnumerable<User>> GetAllUsers(CancellationToken cancellationToken = default);
+    Task<IEnumerable<UserDbo>> GetAllUsers(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Получает пользователей по фильтру. <br/>
@@ -27,7 +27,7 @@ public interface IUserProvider
     /// <param name="filter">Фильтр.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
     /// <returns>Список отфильтрованных пользователей.</returns>
-    Task<IEnumerable<User>> GetUsersByFilter(Expression<Func<User, bool>> filter, CancellationToken cancellationToken = default);
+    Task<IEnumerable<UserDbo>> GetUsersByFilter(Expression<Func<UserDbo, bool>> filter, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Получает пользователя по фильтру.<br/>
@@ -36,7 +36,7 @@ public interface IUserProvider
     /// <param name="filter">Фильтр.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
     /// <returns>Пользователь, полученный по фильтру.</returns>
-    Task<User?> GetOneUserByFilter(Expression<Func<User, bool>> filter, CancellationToken cancellationToken = default);
+    Task<UserDbo?> GetOneUserByFilter(Expression<Func<UserDbo, bool>> filter, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Получает все роли по идентификатору пользователя.
@@ -52,7 +52,7 @@ public interface IUserProvider
     /// <param name="userId">Идентификатор пользователя.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
     /// <returns>Пользователь, найденный по идентификатору.</returns>
-    Task<User?> GetUserById(long userId, CancellationToken cancellationToken = default);
+    Task<UserDbo?> GetUserById(long userId, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Получает пользователя по юзернейму.
@@ -60,5 +60,5 @@ public interface IUserProvider
     /// <param name="username">Юзернейм пользователя.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
     /// <returns>Пользователь, найденный по юзернейму.</returns>
-    Task<User?> GetUserByUsername(string username, CancellationToken cancellationToken = default);
+    Task<UserDbo?> GetUserByUsername(string username, CancellationToken cancellationToken = default);
 }

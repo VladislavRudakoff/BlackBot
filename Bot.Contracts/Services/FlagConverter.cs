@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Bot.Contracts.DTO.Enums;
+using Bot.Contracts.DTOs.Enums;
 
 namespace Bot.Contracts.Services;
 

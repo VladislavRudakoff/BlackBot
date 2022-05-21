@@ -3,13 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bot.WebApi", "BotWebApi\Bot.WebApi.csproj", "{44DEE4A5-54C2-48CE-8161-5D6A8685D75E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bot.WebApi", "BotWebApi\Bot.WebApi.csproj", "{44DEE4A5-54C2-48CE-8161-5D6A8685D75E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bot.Logic", "Bot.Logic\Bot.Logic.csproj", "{274A1EEA-C5B4-4729-BC12-AF9E890DAA35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bot.Logic", "Bot.Logic\Bot.Logic.csproj", "{274A1EEA-C5B4-4729-BC12-AF9E890DAA35}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bot.Data", "Bot.Data\Bot.Data.csproj", "{586467B1-F3A7-4AAE-8D77-BBEFB354914D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bot.Data", "Bot.Data\Bot.Data.csproj", "{586467B1-F3A7-4AAE-8D77-BBEFB354914D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Bot.Contracts", "Bot.Contracts\Bot.Contracts.csproj", "{61A6876F-D996-472A-8A59-94BFDD3FE079}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bot.Contracts", "Bot.Contracts\Bot.Contracts.csproj", "{61A6876F-D996-472A-8A59-94BFDD3FE079}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Telegram.Contracts", "Telegram.Contracts\Telegram.Contracts.csproj", "{4A6E361B-7F92-494F-8062-07375E6E8E90}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bot.Console", "Bot.Console\Bot.Console.csproj", "{D37523AE-0A41-49DF-92FE-67BFF665C671}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bot.Common.Extensions", "Bot.Extensions\Bot.Common.Extensions.csproj", "{9379178B-62E4-418D-92ED-A607325B8F42}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bot", "Bot", "{46427091-49BE-4E06-874F-1A69C4A60E28}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Bot.Common", "Bot.Common", "{6C5748E6-F454-44CF-A178-BB054B59B70F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +43,29 @@ Global
 		{61A6876F-D996-472A-8A59-94BFDD3FE079}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61A6876F-D996-472A-8A59-94BFDD3FE079}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61A6876F-D996-472A-8A59-94BFDD3FE079}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A6E361B-7F92-494F-8062-07375E6E8E90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A6E361B-7F92-494F-8062-07375E6E8E90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A6E361B-7F92-494F-8062-07375E6E8E90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A6E361B-7F92-494F-8062-07375E6E8E90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D37523AE-0A41-49DF-92FE-67BFF665C671}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D37523AE-0A41-49DF-92FE-67BFF665C671}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D37523AE-0A41-49DF-92FE-67BFF665C671}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D37523AE-0A41-49DF-92FE-67BFF665C671}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9379178B-62E4-418D-92ED-A607325B8F42}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9379178B-62E4-418D-92ED-A607325B8F42}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9379178B-62E4-418D-92ED-A607325B8F42}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9379178B-62E4-418D-92ED-A607325B8F42}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{44DEE4A5-54C2-48CE-8161-5D6A8685D75E} = {46427091-49BE-4E06-874F-1A69C4A60E28}
+		{274A1EEA-C5B4-4729-BC12-AF9E890DAA35} = {46427091-49BE-4E06-874F-1A69C4A60E28}
+		{586467B1-F3A7-4AAE-8D77-BBEFB354914D} = {46427091-49BE-4E06-874F-1A69C4A60E28}
+		{61A6876F-D996-472A-8A59-94BFDD3FE079} = {46427091-49BE-4E06-874F-1A69C4A60E28}
+		{D37523AE-0A41-49DF-92FE-67BFF665C671} = {46427091-49BE-4E06-874F-1A69C4A60E28}
+		{9379178B-62E4-418D-92ED-A607325B8F42} = {6C5748E6-F454-44CF-A178-BB054B59B70F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {52C8034C-4B57-47B6-985B-D007280A7E1C}
