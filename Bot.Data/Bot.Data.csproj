@@ -6,4 +6,9 @@
     <WarningsAsErrors>CS8600;CS8602;CS8603</WarningsAsErrors>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Enums\" />
+    <Folder Include="Models\Keyboard\" />
+  </ItemGroup>
+
 </Project>

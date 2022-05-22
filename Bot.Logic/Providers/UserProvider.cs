@@ -4,8 +4,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
-using Bot.Data.Enums;
-using Bot.Data.Models;
+using Bot.Data.DboModels;
+using Bot.Data.StandartEnum;
 using Bot.Logic.AppContext;
 using Bot.Logic.Providers.Interfaces;
 using Bot.Logic.Services.Interfaces;
@@ -19,7 +19,7 @@ public class UserProvider: IUserProvider
 {
 
     private readonly BotContext context;
-    private readonly AsyncCachePolicy<IEnumerable<User>> usersCache;
+    private readonly AsyncCachePolicy<IEnumerable<UserDbo>> usersCache;
     private readonly AsyncCachePolicy<Roles> userRolesCache;
 
     /// <summary>
@@ -33,23 +33,23 @@ public class UserProvider: IUserProvider
     {
         this.context = context;
 
-        usersCache = policyFactory.CreateAsyncCachePolicy<IEnumerable<User>>();
+        usersCache = policyFactory.CreateAsyncCachePolicy<IEnumerable<UserDbo>>();
         userRolesCache = policyFactory.CreateAsyncCachePolicy<Roles>();
     }
 
     /// <inheritdoc />
-    public async Task<IEnumerable<User>> GetAllUsers(CancellationToken cancellationToken = default) =>
+    public async Task<IEnumerable<UserDbo>> GetAllUsers(CancellationToken cancellationToken = default) =>
         await usersCache.ExecuteAsync(async (_, ct) =>
                 await context.Users.ToListAsync(cancellationToken),
                 new Context("all_users"),
                 cancellationToken);
 
     /// <inheritdoc />
-    public async Task<IEnumerable<User>> GetUsersByFilter(Expression<Func<User, bool>> filter, CancellationToken cancellationToken = default) => 
+    public async Task<IEnumerable<UserDbo>> GetUsersByFilter(Expression<Func<UserDbo, bool>> filter, CancellationToken cancellationToken = default) => 
         await context.Users.Where(filter).ToListAsync(cancellationToken);
 
     /// <inheritdoc />
-    public async Task<User?> GetOneUserByFilter(Expression<Func<User, bool>> filter, CancellationToken cancellationToken = default) => 
+    public async Task<UserDbo?> GetOneUserByFilter(Expression<Func<UserDbo, bool>> filter, CancellationToken cancellationToken = default) => 
         await context.Users.SingleOrDefaultAsync(filter, cancellationToken);
 
     /// <inheritdoc />
@@ -63,11 +63,11 @@ public class UserProvider: IUserProvider
             cancellationToken);
 
     /// <inheritdoc />
-    public async Task<User?> GetUserById(long userId, CancellationToken cancellationToken = default) => 
+    public async Task<UserDbo?> GetUserById(long userId, CancellationToken cancellationToken = default) => 
         await context.Users.FirstOrDefaultAsync(x => x.Id == userId, cancellationToken);
 
     /// <inheritdoc />
-    public Task<User?> GetUserByUsername(string username, CancellationToken cancellationToken = default) =>
+    public Task<UserDbo?> GetUserByUsername(string username, CancellationToken cancellationToken = default) =>
         context.Users
             .Where(x => x.Username == username)
             .FirstOrDefaultAsync(cancellationToken);
