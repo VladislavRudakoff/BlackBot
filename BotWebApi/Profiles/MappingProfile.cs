@@ -2,7 +2,7 @@
 using Bot.Contracts.DTOs.Enums;
 using Bot.Contracts.DTOs.Models;
 using Bot.Data.DboModels;
-using Bot.Data.StandartEnum;
+using Bot.Data.Enums;
 
 namespace Bot.WebApi.Profiles;
 
