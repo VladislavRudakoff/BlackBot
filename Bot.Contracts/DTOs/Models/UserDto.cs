@@ -1,4 +1,4 @@
-﻿using Bot.Data.StandartEnum;
+﻿using Bot.Data.Enums;
 
 namespace Bot.Contracts.DTOs.Models;
 

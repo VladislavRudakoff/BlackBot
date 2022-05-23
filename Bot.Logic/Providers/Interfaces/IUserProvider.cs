@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
 using Bot.Data.DboModels;
-using Bot.Data.StandartEnum;
+using Bot.Data.Enums;
 
 namespace Bot.Logic.Providers.Interfaces;
 
