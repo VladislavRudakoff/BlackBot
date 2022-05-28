@@ -11,5 +11,5 @@ public record MessageEntityWithMention(
     string Type,
     int Offset,
     int Length,
-    UserDbo? User)
+    User? User)
     : MessageEntity(Type, Offset, Length);

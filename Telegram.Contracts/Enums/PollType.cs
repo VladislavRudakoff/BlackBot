@@ -1,14 +1,17 @@
-﻿namespace Telegram.Contracts.Enums.
+﻿namespace Telegram.Contracts.Enums;
 
+/// <summary>
+/// Тип опроса.
+/// </summary>
 public enum PollType
 {
     /// <summary>
-    /// Regular poll
+    /// Обычный опрос.
     /// </summary>
     Regular = 1,
 
     /// <summary>
-    /// Quiz
+    /// Викторина.
     /// </summary>
     Quiz = 2
 }

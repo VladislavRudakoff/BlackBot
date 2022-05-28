@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using Bot.Data.Models;
 using Bot.Logic.Providers.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;

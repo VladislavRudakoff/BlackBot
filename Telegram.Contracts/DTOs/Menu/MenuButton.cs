@@ -5,5 +5,5 @@
 /// </summary>
 public abstract record MenuButton()
 {
-    protected abstract string Type { get; init; };
+    protected abstract string Type { get; init; }
 }
