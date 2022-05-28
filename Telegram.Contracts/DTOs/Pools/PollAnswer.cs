@@ -10,5 +10,5 @@ namespace Telegram.Contracts.DTOs.Pools;
 /// <param name="OptionIds">Идентификаторы вариантов ответов, выбранных пользователей.</param>
 public record PollAnswer(
     string PollId,
-    UserDbo User,
+    User User,
     IEnumerable<int> OptionIds);

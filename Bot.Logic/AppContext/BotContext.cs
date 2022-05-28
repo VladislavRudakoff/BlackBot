@@ -1,5 +1,4 @@
 ﻿using Bot.Data.DboModels;
-using Bot.Data.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Bot.Logic.AppContext;

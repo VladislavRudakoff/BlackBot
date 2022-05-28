@@ -1,4 +1,4 @@
-﻿using Telegram.Contracts.Enums.
+﻿using Telegram.Contracts.Enums;
 
 namespace Telegram.Contracts.DTOs.Keyboard;
 

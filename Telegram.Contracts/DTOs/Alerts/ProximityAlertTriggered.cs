@@ -8,6 +8,6 @@
 /// <param name="Watcher">Пользователь, установивший оповещение.</param>
 /// <param name="Distance">Расстояние между пользователями.</param>
 public record ProximityAlertTriggered(
-    UserDbo Traveler,
-    UserDbo Watcher,
+    User Traveler,
+    User Watcher,
     int Distance);
