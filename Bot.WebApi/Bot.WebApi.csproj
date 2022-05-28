@@ -16,6 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Bot.Contracts\Bot.Contracts.csproj" />
     <ProjectReference Include="..\Bot.Logic\Bot.Logic.csproj" />
+    <ProjectReference Include="..\Telegram.Contracts\Telegram.Contracts.csproj" />
   </ItemGroup>
 
 </Project>
