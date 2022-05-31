@@ -40,7 +40,7 @@ public class UsersController : Controller
     [HttpGet]
     public async Task<IEnumerable<UserDto>> GetAllUsers(CancellationToken cancellationToken = default)
     {
-        IEnumerable<UserDbo> users = await userProvider.GetAllUsers(cancellationToken);
+        IEnumerable<UserDbo> users = await userProvider.GetAllUsersAsync(cancellationToken);
 
         return mapper.Map<IEnumerable<UserDto>>(users);
     }
@@ -54,7 +54,7 @@ public class UsersController : Controller
     [HttpGet("{userId:int}")]
     public async Task<ActionResult<UserDto>> GetUsersById(int userId, CancellationToken cancellationToken = default)
     {
-        UserDbo? user = await userProvider.GetUserById(userId, cancellationToken);
+        UserDbo? user = await userProvider.GetUserByIdAsync(userId, cancellationToken);
 
         if (user is null)
         {
@@ -73,7 +73,7 @@ public class UsersController : Controller
     [HttpGet("{userId}/role")]
     public async Task<RolesDto> GetUserRoles(long userId, CancellationToken cancellationToken = default)
     {
-        Roles userRole = await userProvider.GetUserRoles(userId, cancellationToken);
+        Roles userRole = await userProvider.GetUserRolesAsync(userId, cancellationToken);
 
         return mapper.Map<RolesDto>(userRole);
     }
@@ -87,7 +87,7 @@ public class UsersController : Controller
     [HttpGet("{username}")]
     public async Task<ActionResult<UserDto?>> GetUserByUsername(string username, CancellationToken cancellationToken = default)
     {
-        UserDbo? user = await userProvider.GetUserByUsername(username, cancellationToken);
+        UserDbo? user = await userProvider.GetUserByUsernameAsync(username, cancellationToken);
 
         if (user is null)
         {

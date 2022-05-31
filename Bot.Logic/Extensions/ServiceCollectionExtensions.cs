@@ -21,7 +21,8 @@ public static class ServiceCollectionExtensions
     /// <returns></returns>
     public static IServiceCollection AddServices(this IServiceCollection service) =>
         service
-            .AddScoped<IUserProvider, UserProvider>();
+            .AddScoped<IUserProvider, UserProvider>()
+            .AddScoped<ITelegramInfoProvider, TelegramInfoProvider>();
 
     /// <summary>
     /// Регистрирует кэш.
