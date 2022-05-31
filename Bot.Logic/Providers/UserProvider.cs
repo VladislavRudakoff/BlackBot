@@ -38,22 +38,22 @@ public class UserProvider: IUserProvider
     }
 
     /// <inheritdoc />
-    public async Task<IEnumerable<UserDbo>> GetAllUsers(CancellationToken cancellationToken = default) =>
+    public async Task<IEnumerable<UserDbo>> GetAllUsersAsync(CancellationToken cancellationToken = default) =>
         await usersCache.ExecuteAsync(async (_, ct) =>
                 await context.Users.ToListAsync(cancellationToken),
                 new Context("all_users"),
                 cancellationToken);
 
     /// <inheritdoc />
-    public async Task<IEnumerable<UserDbo>> GetUsersByFilter(Expression<Func<UserDbo, bool>> filter, CancellationToken cancellationToken = default) => 
+    public async Task<IEnumerable<UserDbo>> GetUsersByFilterAsync(Expression<Func<UserDbo, bool>> filter, CancellationToken cancellationToken = default) => 
         await context.Users.Where(filter).ToListAsync(cancellationToken);
 
     /// <inheritdoc />
-    public async Task<UserDbo?> GetOneUserByFilter(Expression<Func<UserDbo, bool>> filter, CancellationToken cancellationToken = default) => 
+    public async Task<UserDbo?> GetOneUserByFilterAsync(Expression<Func<UserDbo, bool>> filter, CancellationToken cancellationToken = default) => 
         await context.Users.SingleOrDefaultAsync(filter, cancellationToken);
 
     /// <inheritdoc />
-    public async Task<Roles> GetUserRoles(long userId, CancellationToken cancellationToken = default) =>
+    public async Task<Roles> GetUserRolesAsync(long userId, CancellationToken cancellationToken = default) =>
         await userRolesCache.ExecuteAsync(async (_, ct) => 
             await context.Users
             .Where(x => x.Id == userId)
@@ -63,11 +63,11 @@ public class UserProvider: IUserProvider
             cancellationToken);
 
     /// <inheritdoc />
-    public async Task<UserDbo?> GetUserById(long userId, CancellationToken cancellationToken = default) => 
+    public async Task<UserDbo?> GetUserByIdAsync(long userId, CancellationToken cancellationToken = default) => 
         await context.Users.FirstOrDefaultAsync(x => x.Id == userId, cancellationToken);
 
     /// <inheritdoc />
-    public Task<UserDbo?> GetUserByUsername(string username, CancellationToken cancellationToken = default) =>
+    public Task<UserDbo?> GetUserByUsernameAsync(string username, CancellationToken cancellationToken = default) =>
         context.Users
             .Where(x => x.Username == username)
             .FirstOrDefaultAsync(cancellationToken);

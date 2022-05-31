@@ -11,7 +11,7 @@ public static class ConfigurationExtensions
     /// <summary>
     /// Биндит кастомные конфиги.
     /// </summary>
-    /// <typeparam name="T">Вид конфига.</typeparam>
+    /// <typeparam name="T">Вид конфига.</typeparam>ы
     /// <param name="configuration"><see cref="IConfiguration"/>.</param>
     /// <returns>Конфигурация.</returns>
     public static T BindConfig<T>(this IConfiguration configuration) where T : new()

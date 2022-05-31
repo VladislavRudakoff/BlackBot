@@ -1,4 +1,6 @@
 ﻿using Bot.Common.Extensions;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Telegram.Contracts.ApiClients;
 using Telegram.Contracts.ApiClients.Interfaces;
 using Telegram.Contracts.Settings;
@@ -22,6 +24,6 @@ public static class ServiceCollectionExtensions
         return services;
     }
 
-    public static IServiceCollection RegisterSettings(this IServiceCollection services, IConfiguration config) => 
+    public static IServiceCollection RegisterTelegramApiSettings(this IServiceCollection services, IConfiguration config) => 
         services.AddConfigAsSingleton<TelegramClientSettings>(config);
 }
