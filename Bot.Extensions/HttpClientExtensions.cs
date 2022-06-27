@@ -37,10 +37,8 @@ public static class HttpClientExtensions
     {
         HttpResponseMessage response = 
             await client.PostAsync(
-                url, 
-                new StringContent(JsonConvert.SerializeObject(body, SerializerSettings.SnakeCaseSerializerOptions),
-                    Encoding.UTF8,
-                    "application/json"), 
+                url,
+                SerializeRequest(body), 
                 cancellationToken);
 
         return await DeserializeResponse<T>(response, cancellationToken);
@@ -68,5 +66,10 @@ public static class HttpClientExtensions
     /// <param name="request">Запрос.</param>
     /// <returns>Сериализованный запрос.</returns>
     private static StringContent SerializeRequest(object request) => 
-        new(JsonConvert.SerializeObject(request, SerializerSettings.CamelCaseSerializerOptions), Encoding.UTF8, "application/json");
+        new(
+            JsonConvert.SerializeObject(
+                request, 
+                SerializerSettings.SnakeCaseSerializerOptions), 
+            Encoding.UTF8, 
+            "application/json");
 }
