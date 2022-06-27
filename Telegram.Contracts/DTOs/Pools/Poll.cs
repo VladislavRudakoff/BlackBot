@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using Telegram.Contracts.DTOs.Messages;
+﻿using Telegram.Contracts.DTOs.Messages;
 
 namespace Telegram.Contracts.DTOs.Pools;
 
@@ -19,7 +18,7 @@ namespace Telegram.Contracts.DTOs.Pools;
 /// <param name="ExplanationEntities">Список сущностей, которые появляются в <i>объяснении</i>.</param>
 /// <param name="OpenPeriod">Время, в течении которого опрос будет активен, в секундах.</param>
 /// <param name="CloseDate">Момент времени, когда опрос будет автоматически закрыт(Unix).</param>
-public record Pool(
+public record Poll(
     string Id,
     string Question,
     IEnumerable<PollOption> Options,

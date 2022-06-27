@@ -1,4 +1,6 @@
-﻿namespace Telegram.Contracts.DTOs;
+﻿using Telegram.Contracts.DTOs.Interfaces;
+
+namespace Telegram.Contracts.DTOs;
 
 /// <summary>
 /// Объект для отображения пользователю интерфейса ответа.
@@ -11,4 +13,5 @@
 public record ForceReply(
     string? InputFieldPlaceholder,
     bool? Selective, 
-    bool ShowForceReply = true);
+    bool ShowForceReply = true)
+    : IInterfaceOptions;
