@@ -25,6 +25,28 @@ public static class HttpClientExtensions
     }
 
     /// <summary>
+    /// Асинхронно возвращает Json-ответ на Post запрос.
+    /// </summary>
+    /// <typeparam name="T">Запрашиваемый объект.</typeparam>
+    /// <param name="client"><see cref="HttpClient"/>.</param>
+    /// <param name="url">Url на который идёт запрос.</param>
+    /// <param name="body">Модель тела запроса.</param>
+    /// <param name="cancellationToken">Маркер отмены.</param>
+    /// <returns>Json-ответ.</returns>
+    public static async Task<T?> PostAsJsonAsync<T>(this HttpClient client, string url, object body, CancellationToken cancellationToken = default)
+    {
+        HttpResponseMessage response = 
+            await client.PostAsync(
+                url, 
+                new StringContent(JsonConvert.SerializeObject(body, SerializerSettings.SnakeCaseSerializerOptions),
+                    Encoding.UTF8,
+                    "application/json"), 
+                cancellationToken);
+
+        return await DeserializeResponse<T>(response, cancellationToken);
+    }
+
+    /// <summary>
     /// Десериализует ответ.
     /// </summary>
     /// <typeparam name="TResponse">Десериализуемый объект.</typeparam>
