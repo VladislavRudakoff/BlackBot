@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using Telegram.Contracts.DTOs.Interfaces;
 
 namespace Telegram.Contracts.DTOs.Keyboard;
 
@@ -7,4 +7,5 @@ namespace Telegram.Contracts.DTOs.Keyboard;
 /// </summary>
 /// <param name="InlineKeyboard">Коллекция кнопок.</param>
 public record InlineKeyboardMarkup(
-    IEnumerable<IEnumerable<InlineKeyboardButton>> InlineKeyboard);
+    IEnumerable<IEnumerable<InlineKeyboardButton>> InlineKeyboard)
+    : IInterfaceOptions;

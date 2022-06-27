@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using Telegram.Contracts.DTOs.Interfaces;
 
 namespace Telegram.Contracts.DTOs.Keyboard;
 
@@ -17,4 +17,5 @@ public record ReplyKeyboardMarkup(
     bool? ResizeKeyboard,
     bool? OneTimeKeyboard,
     string? InputFieldPlaceholder,
-    bool? Selective);
+    bool? Selective)
+    : IInterfaceOptions;

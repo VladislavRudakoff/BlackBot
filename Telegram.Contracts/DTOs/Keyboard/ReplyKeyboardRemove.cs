@@ -1,4 +1,6 @@
-﻿namespace Telegram.Contracts.DTOs.Keyboard;
+﻿using Telegram.Contracts.DTOs.Interfaces;
+
+namespace Telegram.Contracts.DTOs.Keyboard;
 
 /// <summary>
 /// Объект, который отсылает Telegram для того, чтобы удалить текущую пользовательскую клавиатуру и отобразить буквенную клавиатуру по умолчанию.
@@ -7,4 +9,5 @@
 /// <param name="Selective">Используется, чтобы удалить клавиатуру только у @упомянутых пользователей, либо если сообщение бота является ответом на сообщение пользователя.</param>
 public record ReplyKeyboardRemove(
     bool RemoveKeyboard,
-    bool? Selective);
+    bool? Selective)
+    : IInterfaceOptions;
