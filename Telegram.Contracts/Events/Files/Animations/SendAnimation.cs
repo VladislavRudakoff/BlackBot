@@ -37,4 +37,4 @@ public record SendAnimation(
     int? ReplyToMessageId,
     bool? AllowSendingWithoutReply,
     IInterfaceOptions? ReplyMarkup)
-    : ISendingEntity;
+    : IEventEntity;

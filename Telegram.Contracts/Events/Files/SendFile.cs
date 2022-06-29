@@ -31,4 +31,4 @@ public record SendFile(
     int? ReplyToMessageId,
     bool? AllowSendingWithoutReply,
     IInterfaceOptions? ReplyMarkup)
-    : ISendingEntity;
+    : IEventEntity;

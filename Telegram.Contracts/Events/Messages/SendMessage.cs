@@ -29,4 +29,4 @@ public record SendMessage(
     int? ReplyToMessageId,
     bool? AllowSendingWithoutReply,
     IInterfaceOptions? ReplyMarkup)
-    : ISendingEntity;
+    : IEventEntity;

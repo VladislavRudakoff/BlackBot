@@ -17,4 +17,4 @@ public record ForwardMessage(
     int MessageId,
     bool? DisableNotification,
     bool? ProtectedContent)
-    : ISendingEntity;
+    : IEventEntity;

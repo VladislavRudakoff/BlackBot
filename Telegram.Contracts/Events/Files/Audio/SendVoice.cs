@@ -31,4 +31,4 @@ public record SendVoice(
     int? ReplyToMessageId,
     bool? AllowSendingWithoutReply,
     IInterfaceOptions? ReplyMarkup)
-    : ISendingEntity;
+    : IEventEntity;

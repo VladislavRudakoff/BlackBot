@@ -28,4 +28,4 @@ public record SendVideoNote(
     int? ReplyToMessageId,
     bool? AllowSendingWithoutReply,
     IInterfaceOptions? ReplyMarkup)
-    : ISendingEntity;
+    : IEventEntity;
