@@ -1,19 +1,30 @@
 ﻿using Bot.Common.Extensions;
+using Telegram.Contracts.ApiClients.Interfaces;
 using Telegram.Contracts.DTOs;
 using Telegram.Contracts.DTOs.Messages;
+using Telegram.Contracts.Events.Contacts;
 using Telegram.Contracts.Events.Files;
 using Telegram.Contracts.Events.Files.Animations;
 using Telegram.Contracts.Events.Files.Audio;
+using Telegram.Contracts.Events.Files.Location;
 using Telegram.Contracts.Events.Files.Photos;
 using Telegram.Contracts.Events.Files.Video;
 using Telegram.Contracts.Events.Interfaces;
 using Telegram.Contracts.Events.Messages;
+using Telegram.Contracts.Events.Pools;
+using Telegram.Contracts.Events.Random;
 using Telegram.Contracts.Settings;
 
 namespace Telegram.Contracts.ApiClients;
 
-public class TelegramClient : BaseTelegramClient
+/// <inheritdoc />
+public class TelegramClient : ITelegramClient
 {
+    private readonly HttpClient httpClient;
+    private readonly TelegramClientSettings telegramClientSettings;
+
+    private readonly string baseBotUrl;
+
     /// <summary>
     /// ctor.
     /// </summary>
@@ -22,60 +33,96 @@ public class TelegramClient : BaseTelegramClient
     public TelegramClient(
         HttpClient httpClient,
         TelegramClientSettings telegramClientSettings)
-        : base(httpClient, telegramClientSettings)
     {
+        this.httpClient = httpClient;
+        this.telegramClientSettings = telegramClientSettings;
+
+        baseBotUrl = telegramClientSettings.BaseUrl + telegramClientSettings.Token;
     }
 
     /// <inheritdoc />
-    public override async Task<TelegramResponse<User>?> GetBotInfoAsync(CancellationToken cancellationToken = default) =>
-        await HttpClient.GetAsJsonAsync<TelegramResponse<User>>(BaseBotUrl + "/getMe", cancellationToken);
+    public async Task<TelegramResponse<User>?> GetBotInfoAsync(CancellationToken cancellationToken = default) =>
+        await httpClient.GetAsJsonAsync<TelegramResponse<User>>(baseBotUrl + "/getMe", cancellationToken);
 
     /// <inheritdoc />
-    public override async Task<TelegramResponse<Message>?> SendMessageAsync(SendMessage sendMessage, CancellationToken cancellationToken = default) =>
+    public async Task<TelegramResponse<Message>?> SendMessageAsync(SendMessage sendMessage, CancellationToken cancellationToken = default) =>
         await ExecuteCommand<SendMessage, Message>(sendMessage, "/sendMessage", cancellationToken);
 
     /// <inheritdoc />
-    public override async Task<TelegramResponse<Message>?> ForwardMessageAsync(ForwardMessage forwardMessage, CancellationToken cancellationToken = default) =>
+    public async Task<TelegramResponse<Message>?> ForwardMessageAsync(ForwardMessage forwardMessage, CancellationToken cancellationToken = default) =>
         await ExecuteCommand<ForwardMessage, Message>(forwardMessage, "/forwardMessage", cancellationToken);
 
     /// <inheritdoc />
-    public override async Task<TelegramResponse<MessageIdentifier>?> CopyMessageAsync(CopyMessage copyMessage, CancellationToken cancellationToken = default) =>
+    public async Task<TelegramResponse<MessageIdentifier>?> CopyMessageAsync(CopyMessage copyMessage, CancellationToken cancellationToken = default) =>
         await ExecuteCommand<CopyMessage, MessageIdentifier>(copyMessage, "/copyMessage", cancellationToken);
     
     /// <inheritdoc />
-    public override async Task<TelegramResponse<Message>?> SendPhotoAsync(SendPhoto sendPhoto, CancellationToken cancellationToken = default) =>
+    public async Task<TelegramResponse<Message>?> SendPhotoAsync(SendPhoto sendPhoto, CancellationToken cancellationToken = default) =>
         await ExecuteCommand<SendPhoto, Message>(sendPhoto, "/sendPhoto", cancellationToken);
 
     /// <inheritdoc />
-    public override async Task<TelegramResponse<Message>?> SendAudioAsync(SendAudio sendAudio, CancellationToken cancellationToken = default) =>
+    public async Task<TelegramResponse<Message>?> SendAudioAsync(SendAudio sendAudio, CancellationToken cancellationToken = default) =>
         await ExecuteCommand<SendAudio, Message>(sendAudio, "/sendAudio", cancellationToken);
 
     /// <inheritdoc />
-    public override async Task<TelegramResponse<Message>?> SendFileAsync(SendFile sendFile, CancellationToken cancellationToken = default) =>
+    public async Task<TelegramResponse<Message>?> SendFileAsync(SendFile sendFile, CancellationToken cancellationToken = default) =>
         await ExecuteCommand<SendFile, Message>(sendFile, "/sendDocument", cancellationToken);
 
     /// <inheritdoc />
-    public override async Task<TelegramResponse<Message>?> SendVideoAsync(SendVideo sendVideo, CancellationToken cancellationToken = default) =>
+    public async Task<TelegramResponse<Message>?> SendVideoAsync(SendVideo sendVideo, CancellationToken cancellationToken = default) =>
         await ExecuteCommand<SendVideo, Message>(sendVideo, "/sendVideo", cancellationToken);
 
     /// <inheritdoc />
-    public override async Task<TelegramResponse<Message>?> SendAnimationAsync(SendAnimation sendAnimation, CancellationToken cancellationToken = default) =>
+    public async Task<TelegramResponse<Message>?> SendAnimationAsync(SendAnimation sendAnimation, CancellationToken cancellationToken = default) =>
         await ExecuteCommand<SendAnimation, Message>(sendAnimation, "/sendAnimation", cancellationToken);
 
     /// <inheritdoc />
-    public override async Task<TelegramResponse<Message>?> SendVoiceAsync(SendVoice sendVoice, CancellationToken cancellationToken = default) =>
+    public async Task<TelegramResponse<Message>?> SendVoiceAsync(SendVoice sendVoice, CancellationToken cancellationToken = default) =>
         await ExecuteCommand<SendVoice, Message>(sendVoice, "/sendVoice", cancellationToken);
 
-    public override async Task<TelegramResponse<Message>?> SendVideoNoteAsync(SendVideoNote sendVideoNote, CancellationToken cancellationToken = default) =>
+    /// <inheritdoc />
+    public async Task<TelegramResponse<Message>?> SendVideoNoteAsync(SendVideoNote sendVideoNote, CancellationToken cancellationToken = default) =>
         await ExecuteCommand<SendVideoNote, Message>(sendVideoNote, "/sendVideoNote", cancellationToken);
+
+    /// <inheritdoc />
+    public async Task<TelegramResponse<IEnumerable<Message>>?> SendMediaGroupAsync(SendMediaGroup sendMediaGroup, CancellationToken cancellationToken = default) =>
+        await ExecuteCommand<SendMediaGroup, IEnumerable<Message>>(sendMediaGroup, "/sendMediaGroup", cancellationToken);
+
+    /// <inheritdoc />
+    public async Task<TelegramResponse<Message>?> SendLocationAsync(SendLocation sendLocation, CancellationToken cancellationToken = default) =>
+        await ExecuteCommand<SendLocation, Message>(sendLocation, "/sendLocation", cancellationToken);
+
+    /// <inheritdoc />
+    public async Task<TelegramResponse<Message>?> EditLiveLocationAsync(EditMessageLiveLocation editLiveLocation, CancellationToken cancellationToken = default) =>
+        await ExecuteCommand<EditMessageLiveLocation, Message>(editLiveLocation, "/editMessageLiveLocation", cancellationToken);
+
+    /// <inheritdoc />
+    public async Task<TelegramResponse<Message>?> StopLiveLocationAsync(StopMessageLiveLocation stopLiveLocation, CancellationToken cancellationToken = default) =>
+        await ExecuteCommand<StopMessageLiveLocation, Message>(stopLiveLocation, "/stopMessageLiveLocation", cancellationToken);
+
+    /// <inheritdoc />
+    public async Task<TelegramResponse<Message>?> SendVenueAsync(SendVenue sendVenue, CancellationToken cancellationToken = default) =>
+        await ExecuteCommand<SendVenue, Message>(sendVenue, "/sendVenue", cancellationToken);
+
+    /// <inheritdoc />
+    public async Task<TelegramResponse<Message>?> SendContactAsync(SendContact sendContact, CancellationToken cancellationToken = default) =>
+        await ExecuteCommand<SendContact, Message>(sendContact, "/sendContact", cancellationToken);
+
+    /// <inheritdoc />
+    public async Task<TelegramResponse<Message>?> SendPollAsync(SendPoll sendPool, CancellationToken cancellationToken = default) =>
+        await ExecuteCommand<SendPoll, Message>(sendPool, "/sendPoll", cancellationToken);
+
+    /// <inheritdoc />
+    public async Task<TelegramResponse<Message>?> SendDiceAsync(SendDice sendDice, CancellationToken cancellationToken = default) =>
+        await ExecuteCommand<SendDice, Message>(sendDice, "/sendDice", cancellationToken);
 
     private async Task<TelegramResponse<TU>?> ExecuteCommand<T, TU>(
         T commandModel, 
         string command, 
         CancellationToken cancellationToken = default) 
-        where T: ISendingEntity =>
-        await HttpClient.PostAsJsonAsync<TelegramResponse<TU>?>(
-            BaseBotUrl + command,
+        where T: IEventEntity =>
+        await httpClient.PostAsJsonAsync<TelegramResponse<TU>?>(
+            baseBotUrl + command,
             commandModel,
             cancellationToken);
 }
