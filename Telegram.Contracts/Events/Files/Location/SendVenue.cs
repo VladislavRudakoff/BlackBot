@@ -5,28 +5,32 @@ using Telegram.Contracts.Events.Interfaces;
 namespace Telegram.Contracts.Events.Files.Location;
 
 /// <summary>
-/// Модель для отправки местоположения.
+/// Модель для отправки информации о месте проведения.
 /// </summary>
 /// <param name="ChatId">Идентификатор чата.</param>
 /// <param name="Latitude">Широта.</param>
 /// <param name="Longitude">Долгота.</param>
-/// <param name="HorizontalAccuracy">Радиус неопределенности местоположения(0-1500м)</param>
-/// <param name="LivePeriod">Время, в течении которого происходит трансляция местоположения(60-86400мин).</param>
-/// <param name="Heading">Для "живых" местоположений - направление в котором движется пользователь(1-360°).</param>
-/// <param name="ProximityAlertRadius">Для "живых" местоположений - указывает на каком расстоянии будет приходить оповещение о приближении к пользователю(1-100000м).</param>
+/// <param name="Title">Название места проведения.</param>
+/// <param name="Address">Адрес места проведения.</param>
+/// <param name="FoursquareId">Идентификатор Foursquare места проведения.</param>
+/// <param name="FoursquareType">Тип заведения Foursquare(если известен).</param>
+/// <param name="GooglePlaceId">Идентификатор места проведения в Google Places.</param>
+/// <param name="GooglePlaceType">Тип заведения в Google Places.</param>
 /// <param name="DisableNotification">Отключает уведомление о сообщении.</param>
 /// <param name="ProtectContent">Защищает содержимое отправленного сообщения от пересылки и сохранения.</param>
 /// <param name="ReplyToMessageId">Идентификатор исходного сообщения, если текущее сообщение является ответом.</param>
 /// <param name="AllowSendingWithoutReply">True если сообщение всё равно должно быть отправлено, даже если не найдено связанное.</param>
 /// <param name="ReplyMarkup">Дополнительные возможности интерфейса.</param>
-public record SendLocation(
+public record SendVenue(
     ChatId ChatId,
     double Latitude,
     double Longitude,
-    double? HorizontalAccuracy,
-    int? LivePeriod,
-    int? Heading,
-    int? ProximityAlertRadius,
+    string Title,
+    string Address,
+    string? FoursquareId,
+    string? FoursquareType,
+    string? GooglePlaceId,
+    string? GooglePlaceType,
     bool? DisableNotification,
     bool? ProtectContent,
     int? ReplyToMessageId,
