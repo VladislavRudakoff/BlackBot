@@ -1,37 +1,29 @@
 ﻿using Telegram.Contracts.DTOs.Chats;
 using Telegram.Contracts.DTOs.Interfaces;
 using Telegram.Contracts.DTOs.Messages;
-using Telegram.Contracts.Events.Interfaces;
+using Telegram.Contracts.Events.Common.Interfaces;
 
-namespace Telegram.Contracts.Events.Files.Animations;
+namespace Telegram.Contracts.Events.Common.Messages;
 
 /// <summary>
-/// Модель для отправки анимации.
+/// Модель для отправки сообщения.
 /// </summary>
 /// <param name="ChatId">Идентификатор чата.</param>
-/// <param name="Animation">Анимация для отправки.</param>
-/// <param name="Duration">Продолжительность анимации(в секундах).</param>
-/// <param name="Width">Ширина анимации.</param>
-/// <param name="Height">Высота анимации.</param>
-/// <param name="Thumb">Миниатюра отправленной анимации.</param>
-/// <param name="Caption">Подпись к анимации.</param>
+/// <param name="Text">Текст сообщения.</param>
 /// <param name="ParseMode">Форматирование.</param>
-/// <param name="CaptionEntities">Коллекция специальных сущностей.</param>
+/// <param name="Entities">Коллекция <see cref="MessageEntity"/>.</param>
+/// <param name="DisableWebPagePreview">Отключает предварительный просмотр ссылок в этом сообщении.</param>
 /// <param name="DisableNotification">Отключает уведомление о сообщении.</param>
 /// <param name="ProtectContent">Защищает содержимое отправленного сообщения от пересылки и сохранения.</param>
 /// <param name="ReplyToMessageId">Идентификатор исходного сообщения, если текущее сообщение является ответом.</param>
 /// <param name="AllowSendingWithoutReply">True если сообщение всё равно должно быть отправлено, даже если не найдено связанное.</param>
 /// <param name="ReplyMarkup">Дополнительные возможности интерфейса.</param>
-public record SendAnimation(
+public record SendMessage(
     ChatId ChatId,
-    string Animation,
-    int? Duration,
-    int? Width,
-    int? Height,
-    string? Thumb, 
-    string? Caption,
+    string Text,
     string? ParseMode,
-    IEnumerable<MessageEntity>? CaptionEntities,
+    IEnumerable<MessageEntity>? Entities,
+    bool? DisableWebPagePreview,
     bool? DisableNotification,
     bool? ProtectContent,
     int? ReplyToMessageId,

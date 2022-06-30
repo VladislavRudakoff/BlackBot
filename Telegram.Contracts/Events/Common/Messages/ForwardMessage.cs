@@ -1,7 +1,7 @@
 ﻿using Telegram.Contracts.DTOs.Chats;
-using Telegram.Contracts.Events.Interfaces;
+using Telegram.Contracts.Events.Common.Interfaces;
 
-namespace Telegram.Contracts.Events.Messages;
+namespace Telegram.Contracts.Events.Common.Messages;
 
 /// <summary>
 /// Модель для пересылки сообщения.

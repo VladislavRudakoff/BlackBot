@@ -1,8 +1,8 @@
 ﻿using Telegram.Contracts.DTOs.Chats;
 using Telegram.Contracts.DTOs.Interfaces;
-using Telegram.Contracts.Events.Interfaces;
+using Telegram.Contracts.Events.Common.Interfaces;
 
-namespace Telegram.Contracts.Events.Pools;
+namespace Telegram.Contracts.Events.Common.Polls;
 
 /// <summary>
 /// Модель для отправки опроса.

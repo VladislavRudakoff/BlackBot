@@ -1,9 +1,9 @@
 ﻿using Telegram.Contracts.DTOs.Chats;
 using Telegram.Contracts.DTOs.Interfaces;
 using Telegram.Contracts.DTOs.Messages;
-using Telegram.Contracts.Events.Interfaces;
+using Telegram.Contracts.Events.Common.Interfaces;
 
-namespace Telegram.Contracts.Events.Messages;
+namespace Telegram.Contracts.Events.Common.Messages;
 
 /// <summary>
 /// Модель для копирования сообщения.
