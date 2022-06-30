@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace Bot.Logic.Migrations;
+namespace Bot.Data.Migrations;
 
 public partial class AddedUserTable : Migration
 {
