@@ -12,5 +12,5 @@ public record ChatMemberOwner(
     string? CustomTitle)
     : ChatMember
 {
-    protected override string Status { get; init; } = "creator";
+    protected override string Status => "creator";
 }

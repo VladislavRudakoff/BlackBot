@@ -40,5 +40,5 @@ public record ChatMemberAdministrator(
     string? CustomTitle)
     : ChatMember
 {
-    protected override string Status { get; init; } = "administrator";
+    protected override string Status => "administrator";
 }
