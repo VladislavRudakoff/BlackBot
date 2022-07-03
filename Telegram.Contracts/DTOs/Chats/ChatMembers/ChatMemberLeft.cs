@@ -8,5 +8,5 @@ public record ChatMemberLeft(
     User User) 
     : ChatMember
 {
-    protected override string Status { get; init; } = "left";
+    protected override string Status => "left";
 }

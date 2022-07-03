@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Text.Json.Serialization;
-using Bot.Contracts.Services;
 
 namespace Bot.Contracts.DTOs.Enums;
 
 /// <summary>
 /// Dto перечисление ролей.
 /// </summary>
-[JsonConverter(typeof(FlagConverter))]
 [Flags]
 public enum RolesDto
 {

@@ -1,6 +1,6 @@
 using System.Reflection;
 using Bot.Common.Extensions;
-using Bot.Logic.AppContext;
+using Bot.Data.AppContext;
 using Bot.Logic.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

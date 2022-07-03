@@ -10,5 +10,5 @@ public record ChatMemberBanned(
     int UntilDate)
     : ChatMember
 {
-    protected override string Status { get; init; } = "kicked";
+    protected override string Status => "kicked";
 }

@@ -1,1 +1,1 @@
-﻿Console.WriteLine("Hello");
+﻿Console.WriteLine("Now - empty project for future changes.");

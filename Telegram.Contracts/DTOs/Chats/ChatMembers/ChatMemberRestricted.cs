@@ -25,5 +25,5 @@ public record ChatMemberRestricted(
     bool? CanAddWebPagePreviews, 
     int UntilDate) : ChatMember
 {
-    protected override string Status { get; init; } = "restricted";
+    protected override string Status => "restricted";
 }

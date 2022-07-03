@@ -12,9 +12,7 @@ public class ChatId
     /// <summary>
     /// ctor. 
     /// </summary>
-    /// <param name="identifier"></param>
-    /// <exception cref="ArgumentNullException"></exception>
-    /// <exception cref="ArgumentException"></exception>
+    /// <param name="identifier">Идентификатор чата.</param>
     public ChatId(object? identifier)
     {
         switch (identifier)

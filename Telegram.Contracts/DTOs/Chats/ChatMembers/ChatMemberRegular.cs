@@ -8,5 +8,5 @@ public record ChatMemberRegular(
     User User)
     : ChatMember
 {
-    protected override string Status { get; init; } = "member";
+    protected override string Status => "member";
 }
