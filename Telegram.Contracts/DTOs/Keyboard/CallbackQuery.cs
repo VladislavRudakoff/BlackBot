@@ -3,7 +3,7 @@
 namespace Telegram.Contracts.DTOs.Keyboard;
 
 /// <summary>
-/// Объект представляет входящий callback-вызов от  callback кнопки на встроенной клавиатуре.
+/// Объект представляет входящий callback-вызов от callback кнопки на встроенной клавиатуре.
 /// </summary>
 /// <param name="Id">Уникальный идентификатор запроса.</param>
 /// <param name="User">Отправитель.</param>

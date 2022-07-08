@@ -13,8 +13,22 @@ public static class ServiceCollectionExtensions
     {
         TelegramClientSettings clientSettings = config.BindConfig<TelegramClientSettings>();
 
-        services.AddHttpClient<ITelegramClient, TelegramClient>(
-            "TelegramBot",
+        services.AddHttpClient<IChatTelegramClient, ChatTelegramClient>(
+            "TelegramChatClient",
+            b =>
+            {
+                b.BaseAddress = new(clientSettings.BaseUrl);
+                b.Timeout = clientSettings.TimeOut;
+            });
+        services.AddHttpClient<IBotTelegramClient, BotTelegramClient>(
+            "TelegramBotClient",
+            b =>
+            {
+                b.BaseAddress = new(clientSettings.BaseUrl);
+                b.Timeout = clientSettings.TimeOut;
+            });
+        services.AddHttpClient<IMessageTelegramClient, MessageTelegramClient>(
+            "TelegramMessageClient",
             b =>
             {
                 b.BaseAddress = new(clientSettings.BaseUrl);
