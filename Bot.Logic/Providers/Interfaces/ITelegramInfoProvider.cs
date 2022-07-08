@@ -14,5 +14,5 @@ public interface ITelegramInfoProvider
     /// </summary>
     /// <param name="cancellationToken">Маркер отмены.</param>
     /// <returns><see cref="Task{TResult}"/>.</returns>
-    Task<TelegramResponse<User>?> GetInfoAsync(CancellationToken cancellationToken = default);
+    Task<TelegramResponse<User>?> GetBotInfoAsync(CancellationToken cancellationToken = default);
 }

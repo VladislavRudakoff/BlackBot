@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="JsonSubTypes" Version="1.9.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.1" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
@@ -16,6 +17,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Bot.Extensions\Bot.Common.Extensions.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DTOs\Stickers\" />
+    <Folder Include="Events\Chats\Queries\Stickers\" />
   </ItemGroup>
 
 </Project>

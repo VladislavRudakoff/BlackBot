@@ -9,18 +9,18 @@ namespace Bot.Logic.Providers;
 /// <inheritdoc cref="ITelegramInfoProvider"/>
 public class TelegramInfoProvider : ITelegramInfoProvider
 {
-    private readonly ITelegramClient telegramClient;
+    private readonly IBotTelegramClient botTelegramClient;
 
     /// <summary>
     /// ctor.
     /// </summary>
-    /// <param name="telegramClient"><see cref="ITelegramClient"/>.</param>
-    public TelegramInfoProvider(ITelegramClient telegramClient)
+    /// <param name="botTelegramClient"><see cref="IBotTelegramClient"/>.</param>
+    public TelegramInfoProvider(IBotTelegramClient botTelegramClient)
     {
-        this.telegramClient = telegramClient;
+        this.botTelegramClient = botTelegramClient;
     }
 
     /// <inheritdoc />
-    public Task<TelegramResponse<User>?> GetInfoAsync(CancellationToken cancellationToken = default) => 
-        telegramClient.GetBotInfoAsync(cancellationToken);
+    public Task<TelegramResponse<User>?> GetBotInfoAsync(CancellationToken cancellationToken = default) =>
+        botTelegramClient.GetBotInfoAsync(cancellationToken);
 }
