@@ -303,4 +303,29 @@ public interface IMessageTelegramClient
     /// <param name="cancellationToken">Маркер отмены.</param>
     /// <returns><b><see cref="StickerSet"/>.</b></returns>
     Task<TelegramResponse<StickerSet>?> GetStickerSetAsync(GetStickerSet getStickerSet, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Устанавливает миниатюру набора стикеров.
+    /// </summary>
+    /// <remarks>Анимированные миниатюры можно установить только для набора анимированных стикеров. Видеоминиатюры только для набора видеостикеров.</remarks>
+    /// <param name="setStickerSetThumb"><see cref="SetStickerSetThumb"/>.</param>
+    /// <param name="cancellationToken">Маркер отмены.</param>
+    /// <returns><b>True - в случае успеха.</b></returns>
+    Task<TelegramResponse<bool>?> SetStickerSetThumbAsync(SetStickerSetThumb setStickerSetThumb, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Удаляет стикер из набора стикеров.
+    /// </summary>
+    /// <param name="deleteStickerFromSet"><see cref="DeleteStickerFromSet"/>.</param>
+    /// <param name="cancellationToken">Маркер отмены.</param>
+    /// <returns><b>True - в случае успеха.</b></returns>
+    Task<TelegramResponse<bool>?> DeleteStickerFromSetAsync(DeleteStickerFromSet deleteStickerFromSet, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Перемещает стикер в наборе стикеров.
+    /// </summary>
+    /// <param name="setStickerPositionInSet"><see cref="SetStickerPositionInSet"/>.</param>
+    /// <param name="cancellationToken">Маркер отмены.</param>
+    /// <returns><b>True - в случае успеха.</b></returns>
+    Task<TelegramResponse<bool>?> SetStickerPositionInSetAsync(SetStickerPositionInSet setStickerPositionInSet, CancellationToken cancellationToken = default);
 }

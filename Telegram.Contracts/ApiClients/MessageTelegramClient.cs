@@ -129,4 +129,13 @@ public class MessageTelegramClient : BaseTelegramClient, IMessageTelegramClient
 
     public async Task<TelegramResponse<StickerSet>?> GetStickerSetAsync(GetStickerSet getStickerSet, CancellationToken cancellationToken = default) =>
         await ExecuteCommand<GetStickerSet, StickerSet>(getStickerSet, "/getStickerSet", cancellationToken);
+
+    public async Task<TelegramResponse<bool>?> SetStickerSetThumbAsync(SetStickerSetThumb setStickerSetThumb, CancellationToken cancellationToken = default) =>
+        await ExecuteCommand<SetStickerSetThumb, bool>(setStickerSetThumb, "/setStickerSetThumb", cancellationToken);
+
+    public async Task<TelegramResponse<bool>?> DeleteStickerFromSetAsync(DeleteStickerFromSet deleteStickerFromSet, CancellationToken cancellationToken = default) =>
+        await ExecuteCommand<DeleteStickerFromSet, bool>(deleteStickerFromSet, "/deleteStickerFromSet", cancellationToken);
+
+    public async Task<TelegramResponse<bool>?> SetStickerPositionInSetAsync(SetStickerPositionInSet setStickerPositionInSet, CancellationToken cancellationToken = default) =>
+        await ExecuteCommand<SetStickerPositionInSet, bool>(setStickerPositionInSet, "/setStickerPositionInSet", cancellationToken);
 }

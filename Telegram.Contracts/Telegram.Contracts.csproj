@@ -18,10 +18,4 @@
   <ItemGroup>
     <ProjectReference Include="..\Bot.Extensions\Bot.Common.Extensions.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="DTOs\Stickers\" />
-    <Folder Include="Events\Chats\Queries\Stickers\" />
-  </ItemGroup>
-
 </Project>
