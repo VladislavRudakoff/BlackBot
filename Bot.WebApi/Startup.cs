@@ -9,6 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using Telegram.Contracts.Extensions;
 using Telegram.Contracts.Settings;
@@ -33,6 +34,7 @@ public class Startup
                 {
                     NamingStrategy = new CamelCaseNamingStrategy()
                 };
+                options.SerializerSettings.Converters.Add(new StringEnumConverter());
             });
 
         services.AddOptions();
