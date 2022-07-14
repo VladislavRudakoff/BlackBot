@@ -7,7 +7,7 @@ namespace Telegram.Contracts.Enums;
 /// <summary>
 /// Тип результата.
 /// </summary>
-[JsonConverter(typeof(CustomEnumsConverter<InlineQueryResultType>))]
+[JsonConverter(typeof(InlineQueryResultTypeConverter))]
 public sealed class InlineQueryResultType : Enumeration
 {
     /// <summary>Коллекция ссылок на инстансы с целочисленными ключами.</summary>
@@ -53,6 +53,14 @@ public sealed class InlineQueryResultType : Enumeration
     public static readonly InlineQueryResultType Sticker = new(12, "sticker");
 
     /// <summary>
+    /// static ctor.
+    /// </summary>
+    static InlineQueryResultType()
+    {
+        Instance = GetInstance;
+    }
+
+    /// <summary>
     /// ctor.
     /// </summary>
     /// <param name="id">Идентификатор перечисления.</param>
@@ -91,5 +99,20 @@ public sealed class InlineQueryResultType : Enumeration
         }
 
         throw new InvalidCastException($"Cannot implicitly cast {value} to {typeof(InlineQueryResultType)}");
+    }
+
+    /// <summary>
+    /// Возвращает инстанс по ключу(создан как обходной путь для десериализации).
+    /// </summary>
+    /// <param name="key">Строковый ключ.</param>
+    /// <returns>Инстанс соответствующий ключу.</returns>
+    private static InlineQueryResultType GetInstance(string key)
+    {
+        if (InstancesWithStringKeys.TryGetValue(key, out var result))
+        {
+            return result;
+        }
+
+        throw new NullReferenceException($"The value corresponding to the key '{key}' does not exist.");
     }
 }
