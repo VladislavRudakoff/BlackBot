@@ -19,6 +19,11 @@ public abstract class Enumeration : IComparable
     public string Value { get; }
 
     /// <summary>
+    /// Поле для получения текущего инстанса.
+    /// </summary>
+    public static Func<string, Enumeration> Instance { get; private protected set; }
+
+    /// <summary>
     /// ctor.
     /// </summary>
     /// <param name="id">Идентификатор члена перечисления.</param>
@@ -74,9 +79,12 @@ public abstract class Enumeration : IComparable
         }
 
         bool typeMatches = GetType() == obj.GetType();
-        bool valueMatches = Id.Equals(otherValue.Id);
+        bool valueMatchesInt = Id.Equals(otherValue.Id);
+        bool valueMatchesString = Value.Equals(otherValue.Value);
 
-        return typeMatches && valueMatches;
+        return typeMatches 
+               && valueMatchesInt
+               && valueMatchesString;
     }
 
     /// <summary>
