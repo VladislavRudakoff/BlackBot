@@ -41,7 +41,7 @@ public class TelegramClientSettings
     public TimeSpan TimeOut { get; set; }
 
     /// <summary>
-    /// Передаваемые аргументы.
+    /// Коллекция аргументов.
     /// </summary>
-    public string? BaseArgs { get; set; } = null!;
+    public IEnumerable<string>? BaseArgs { get; set; }
 }

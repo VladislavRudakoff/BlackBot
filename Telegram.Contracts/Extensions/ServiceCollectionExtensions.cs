@@ -9,7 +9,13 @@ namespace Telegram.Contracts.Extensions;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection RegisterTelegramApiClient(this IServiceCollection services, IConfiguration config, TelegramClientSettings settings)
+    public static IServiceCollection AddTelegramClients(this IServiceCollection services, IConfiguration config) =>
+        services
+            .RegisterTelegramApiClients(config)
+            .RegisterTelegramApiSettings(config);
+
+
+    private static IServiceCollection RegisterTelegramApiClients(this IServiceCollection services, IConfiguration config)
     {
         TelegramClientSettings clientSettings = config.BindConfig<TelegramClientSettings>();
 
@@ -38,6 +44,6 @@ public static class ServiceCollectionExtensions
         return services;
     }
 
-    public static IServiceCollection RegisterTelegramApiSettings(this IServiceCollection services, IConfiguration config) => 
+    private static IServiceCollection RegisterTelegramApiSettings(this IServiceCollection services, IConfiguration config) => 
         services.AddConfigAsSingleton<TelegramClientSettings>(config);
 }
