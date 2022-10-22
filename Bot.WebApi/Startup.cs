@@ -2,6 +2,9 @@ using System.Reflection;
 using Bot.Common.Extensions;
 using Bot.Data.AppContext;
 using Bot.Logic.Extensions;
+using Bot.Logic.Ngrok.Extensions;
+using Bot.Logic.Ngrok.Settings;
+using Bot.WebApi.HostedServices;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +15,6 @@ using Microsoft.OpenApi.Models;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Serialization;
 using Telegram.Contracts.Extensions;
-using Telegram.Contracts.Settings;
 
 namespace Bot.WebApi;
 
@@ -37,23 +39,20 @@ public class Startup
                 options.SerializerSettings.Converters.Add(new StringEnumConverter());
             });
 
+        services.AddHostedService<HostedService>();
+
         services.AddOptions();
 
         services.AddDbContext<BotContext>(opt =>
                 opt.UseNpgsql(Configuration.GetConnectionString("PostgreSQL")));
 
-        services.AddCache(Configuration);
-
-        services.AddSettings(Configuration);
-
-        services.AddServices();
-
-        services.AddFactories();
+        services.AddLogicServices(Configuration);
 
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-        services.RegisterTelegramApiSettings(Configuration);
-        services.RegisterTelegramApiClient(Configuration, Configuration.BindConfig<TelegramClientSettings>());
+        services.AddTelegramClients(Configuration);
+
+        services.AddNgrok(Configuration, Configuration.BindConfig<NgrokSettings>());
 
         services.AddSwaggerGen(c =>
         {
