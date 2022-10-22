@@ -7,7 +7,7 @@ namespace Telegram.Contracts.Enums;
 /// <summary>
 /// Тип результата.
 /// </summary>
-[JsonConverter(typeof(InlineQueryResultTypeConverter))]
+[JsonConverter(typeof(TypesafeEnumConverter<InlineQueryResultType>))]
 public sealed class InlineQueryResultType : Enumeration
 {
     /// <summary>Коллекция ссылок на инстансы с целочисленными ключами.</summary>
@@ -57,7 +57,7 @@ public sealed class InlineQueryResultType : Enumeration
     /// </summary>
     static InlineQueryResultType()
     {
-        Instance = GetInstance;
+        GetInstanceOfEnumeration[typeof(InlineQueryResultType)] = GetInstance;
     }
 
     /// <summary>

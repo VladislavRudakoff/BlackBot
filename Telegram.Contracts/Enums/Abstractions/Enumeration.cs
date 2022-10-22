@@ -19,9 +19,9 @@ public abstract class Enumeration : IComparable
     public string Value { get; }
 
     /// <summary>
-    /// Поле для получения текущего инстанса.
+    /// Коллекция методов для получения инстансов.
     /// </summary>
-    public static Func<string, Enumeration> Instance { get; private protected set; }
+    public static Dictionary<Type, Func<string, Enumeration>> GetInstanceOfEnumeration { get; private protected set; } = new();
 
     /// <summary>
     /// ctor.
