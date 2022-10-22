@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net.Http;
+﻿using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Bot.Common.Extensions;
@@ -7,6 +6,8 @@ using Bot.Logic.Ngrok.DTOs;
 using Bot.Logic.Ngrok.Settings;
 using Bot.Logic.Ngrok.DTOs.Responses;
 using Bot.Logic.Ngrok.NgrokApi.Interfaces;
+using Bot.Logic.Ngrok.Exceptions.NotFound;
+using Bot.Logic.Ngrok.Exceptions.FailedLaunch;
 
 namespace Bot.Logic.Ngrok.NgrokApi;
 
@@ -28,41 +29,32 @@ public class NgrokAgentApi : INgrokAgentApi
         this.settings = settings;
     }
 
-    public async Task<NgrokResponse> GetAllTunnelDetail(CancellationToken cancellationToken = default) =>
+    public async Task<NgrokResponse> GetAllTunnelDetails(CancellationToken cancellationToken = default) =>
         await ngrokHttpClient.GetAsJsonAsync<NgrokResponse>(
             settings.NgrokAgentUrl + "/api/tunnels",
             cancellationToken)
-        ?? throw new NotImplementedException();
+        ?? throw new NotFoundTunnelsException();
 
-    public async Task<TunnelDetail> GetTunnelDetail(string tunnelName, CancellationToken cancellationToken = default) =>
+    public async Task<TunnelDetail> GetTunnelDetails(string tunnelName, CancellationToken cancellationToken = default) =>
         await ngrokHttpClient.GetAsJsonAsync<TunnelDetail>(
             settings.NgrokAgentUrl + $"/api/tunnels/{tunnelName}",
             cancellationToken)
-        ?? throw new NotImplementedException();
+        ?? throw new NotFoundTunnelDetailException(tunnelName);
 
     public async Task<string> GetPublicUrl(string tunnelName, CancellationToken cancellationToken = default)
     {
-        TunnelDetail details = 
-            await ngrokHttpClient.GetAsJsonAsync<TunnelDetail>(
-                settings.NgrokAgentUrl + $"/api/tunnels/{tunnelName}", 
-                cancellationToken)
-            ?? throw new NotImplementedException();
+        TunnelDetail details = await GetTunnelDetails(tunnelName, cancellationToken);
 
         return details.PublicUrl;
     }
 
-    public Task<TunnelDetail> StartTunnel(StartTunnel startTunnel, CancellationToken cancellationToken = default)
-    {
-        throw new NotImplementedException();
-    }
+    public async Task<TunnelDetail> StartTunnel(StartTunnel startTunnel, CancellationToken cancellationToken = default) => 
+        await ngrokHttpClient.PostAsJsonAsync<TunnelDetail>(
+            settings.NgrokAgentUrl + "/api/tunnels", 
+            startTunnel, 
+            cancellationToken) 
+        ?? throw new FailedLaunchTunnelException(startTunnel);
 
-    public Task StopTunnel(string tunnelName, CancellationToken cancellationToken = default)
-    {
-        throw new NotImplementedException();
-    }
-
-    public Task GetListRequests(int limit, string tunnelName, CancellationToken cancellationToken = default)
-    {
-        throw new NotImplementedException();
-    }
+    public async Task StopTunnel(string tunnelName, CancellationToken cancellationToken = default) => 
+        await ngrokHttpClient.DeleteAsync(settings.NgrokAgentUrl + $"/api/tunnels/{tunnelName}", cancellationToken);
 }
