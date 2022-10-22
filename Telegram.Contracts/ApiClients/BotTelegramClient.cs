@@ -4,11 +4,13 @@ using Telegram.Contracts.DTOs;
 using Telegram.Contracts.DTOs.Chats;
 using Telegram.Contracts.DTOs.Commands;
 using Telegram.Contracts.DTOs.Menu;
+using Telegram.Contracts.DTOs.Webhook;
 using Telegram.Contracts.Events.BotCommands.Commands;
 using Telegram.Contracts.Events.BotCommands.Queries;
 using Telegram.Contracts.Events.Chats.Commands;
 using Telegram.Contracts.Events.Chats.Commands.Buttons;
 using Telegram.Contracts.Events.Chats.Queries.Buttons;
+using Telegram.Contracts.Events.Webhook.Commands;
 using Telegram.Contracts.Settings;
 
 namespace Telegram.Contracts.ApiClients;
@@ -95,5 +97,22 @@ public class BotTelegramClient : BaseTelegramClient, IBotTelegramClient
         await ExecuteCommand<GetMyDefaultAdministratorRights, ChatAdministratorRights>(
             getDefaultAdministratorRights, 
             "/setMyDefaultAdministratorRights", 
+            cancellationToken);
+
+    public async Task<TelegramResponse<bool>?> SetWebhookAsync(SetWebhook setWebhook, CancellationToken cancellationToken = default) =>
+        await ExecuteCommand<SetWebhook, bool>(
+            setWebhook,
+            "/setWebhook",
+            cancellationToken);
+
+    public async Task<TelegramResponse<bool>?> DeleteWebhookAsync(DeleteWebhook deleteWebhook, CancellationToken cancellationToken = default) =>
+        await ExecuteCommand<DeleteWebhook, bool>(
+            deleteWebhook,
+            "/deleteWebhook",
+            cancellationToken);
+
+    public async Task<TelegramResponse<WebhookInfo>?> GetWebhookInfoAsync(CancellationToken cancellationToken = default) =>
+        await HttpClient.GetAsJsonAsync<TelegramResponse<WebhookInfo>>(
+            BaseBotUrl + "/getWebhookInfo",
             cancellationToken);
 }
