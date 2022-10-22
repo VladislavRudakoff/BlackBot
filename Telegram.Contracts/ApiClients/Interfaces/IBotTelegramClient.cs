@@ -2,11 +2,13 @@
 using Telegram.Contracts.DTOs.Chats;
 using Telegram.Contracts.DTOs.Commands;
 using Telegram.Contracts.DTOs.Menu;
+using Telegram.Contracts.DTOs.Webhook;
 using Telegram.Contracts.Events.BotCommands.Commands;
 using Telegram.Contracts.Events.BotCommands.Queries;
 using Telegram.Contracts.Events.Chats.Commands;
 using Telegram.Contracts.Events.Chats.Commands.Buttons;
 using Telegram.Contracts.Events.Chats.Queries.Buttons;
+using Telegram.Contracts.Events.Webhook.Commands;
 
 namespace Telegram.Contracts.ApiClients.Interfaces;
 
@@ -91,4 +93,27 @@ public interface IBotTelegramClient
     Task<TelegramResponse<ChatAdministratorRights>?> GetDefaultAdministratorRightsAsync(
         GetMyDefaultAdministratorRights getDefaultAdministratorRights, 
         CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Устанавливает webhook для бота.
+    /// </summary>
+    /// <param name="setWebhook"><see cref="SetWebhook"/>.</param>
+    /// <param name="cancellationToken">Маркер отмены.</param>
+    /// <returns><b>True - в случае успеха.</b></returns>
+    Task<TelegramResponse<bool>?> SetWebhookAsync(SetWebhook setWebhook, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Удаляет привязку webhook для бота.
+    /// </summary>
+    /// <param name="deleteWebhook"><see cref="DeleteWebhook"/>.</param>
+    /// <param name="cancellationToken">Маркер отмены.</param>
+    /// <returns><b>True - в случае успеха.</b></returns>
+    Task<TelegramResponse<bool>?> DeleteWebhookAsync(DeleteWebhook deleteWebhook, CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Получает текущую информацию о webhook.
+    /// </summary>
+    /// <param name="cancellationToken">Маркер отмены.</param>
+    /// <returns><b><see cref="WebhookInfo"/>.</b></returns>
+    Task<TelegramResponse<WebhookInfo>?> GetWebhookInfoAsync(CancellationToken cancellationToken = default);
 }

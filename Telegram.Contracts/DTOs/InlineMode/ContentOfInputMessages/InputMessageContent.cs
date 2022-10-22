@@ -3,4 +3,4 @@
 /// <summary>
 /// Базовый объект, представляющий содержимое сообщения, которое будет отправлено в результате inline-запроса.
 /// </summary>
-public  record InputMessageContent();
+public abstract record InputMessageContent;

@@ -1,14 +1,14 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Telegram.Contracts.Enums;
 using Telegram.Contracts.Enums.Abstractions;
 
 namespace Telegram.Contracts.Converters;
 
-public class InlineQueryResultTypeConverter : JsonConverter<InlineQueryResultType>
+public class TypesafeEnumConverter<T> : JsonConverter<T>
+    where T : Enumeration
 {
     /// <inheritdoc />
-    public override void WriteJson(JsonWriter writer, InlineQueryResultType? enumeration, JsonSerializer serializer)
+    public override void WriteJson(JsonWriter writer, T? enumeration, JsonSerializer serializer)
     {
         if (enumeration is null)
         {
@@ -19,10 +19,10 @@ public class InlineQueryResultTypeConverter : JsonConverter<InlineQueryResultTyp
     }
 
     /// <inheritdoc />
-    public override InlineQueryResultType ReadJson(
+    public override T ReadJson(
         JsonReader reader,
         Type objectType,
-        InlineQueryResultType? existingValue,
+        T? existingValue,
         bool hasExistingValue,
         JsonSerializer serializer)
     {
@@ -33,6 +33,6 @@ public class InlineQueryResultTypeConverter : JsonConverter<InlineQueryResultTyp
             throw new NullReferenceException("Enumeration value is not be null.");
         }
 
-        return (InlineQueryResultType)Enumeration.Instance(value);
+        return (T)Enumeration.GetInstanceOfEnumeration[typeof(T)](value);
     }
 }
