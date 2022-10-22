@@ -47,10 +47,10 @@ public record IncomingUpdate(
     Message? ChannelPost,
     Message? EditedChannelPost,
     InlineQuery? InlineQuery,
-    ChosenInlineResult ChosenInlineResult,
+    ChosenInlineResult? ChosenInlineResult,
     CallbackQuery? CallbackQuery,
     Poll? Poll,
-    PollAnswer PollAnswer,
-    ChatMemberUpdated MyChatMember,
+    PollAnswer? PollAnswer,
+    ChatMemberUpdated? MyChatMember,
     ChatMemberUpdated? ChatMember,
     ChatJoinRequest? ChatJoinRequest);
