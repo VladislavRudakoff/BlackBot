@@ -3,6 +3,7 @@ using Telegram.Contracts.DTOs.InlineMode;
 using Telegram.Contracts.DTOs.Keyboard;
 using Telegram.Contracts.DTOs.Messages;
 using Telegram.Contracts.DTOs.Pools;
+using Telegram.Contracts.Enums;
 
 namespace Telegram.Contracts.DTOs.Webhook;
 
@@ -53,4 +54,25 @@ public record IncomingUpdate(
     PollAnswer? PollAnswer,
     ChatMemberUpdated? MyChatMember,
     ChatMemberUpdated? ChatMember,
-    ChatJoinRequest? ChatJoinRequest);
+    ChatJoinRequest? ChatJoinRequest)
+{
+    /// <summary>
+    /// Тип обновления.
+    /// </summary>
+    public IncomingUpdateType Type => this switch
+    {
+        { Message: { } } => IncomingUpdateType.Message,
+        { EditedMessage: { } } => IncomingUpdateType.EditedMessage,
+        { InlineQuery: { } } => IncomingUpdateType.InlineQuery,
+        { ChosenInlineResult: { } } => IncomingUpdateType.ChosenInlineResult,
+        { CallbackQuery: { } } => IncomingUpdateType.CallbackQuery,
+        { ChannelPost: { } } => IncomingUpdateType.ChannelPost,
+        { EditedChannelPost: { } } => IncomingUpdateType.EditedChannelPost,
+        { Poll: { } } => IncomingUpdateType.Poll,
+        { PollAnswer: { } } => IncomingUpdateType.PollAnswer,
+        { MyChatMember: { } } => IncomingUpdateType.MyChatMember,
+        { ChatMember: { } } => IncomingUpdateType.ChatMember,
+        { ChatJoinRequest: { } } => IncomingUpdateType.ChatJoinRequest,
+        _ => IncomingUpdateType.Unknown
+    };
+}

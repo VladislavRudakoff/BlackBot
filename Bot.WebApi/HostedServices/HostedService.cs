@@ -47,7 +47,7 @@ public class HostedService : IHostedService
 
         string publicUrl = await ngrokAgent.GetPublicUrl(BaseTunnelName, cancellationToken);
 
-        await botTelegramClient.SetWebhookAsync(new(publicUrl + "/webhook"), cancellationToken);
+        await botTelegramClient.SetWebhookAsync(new(publicUrl + "api/webhook"), cancellationToken);
     }
 
     public async Task StopAsync(CancellationToken cancellationToken)
