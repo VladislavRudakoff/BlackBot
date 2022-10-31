@@ -1,5 +1,7 @@
 ﻿using Bot.Common.Extensions;
 using Bot.Data.Settings;
+using Bot.Logic.Dispatchers;
+using Bot.Logic.Dispatchers.Interfaces;
 using Bot.Logic.Providers;
 using Bot.Logic.Providers.Interfaces;
 using Bot.Logic.Services;
@@ -20,19 +22,20 @@ public static class ServiceCollectionExtensions
     /// </summary>
     /// <param name="services"><see cref="IServiceCollection"/>.</param>
     /// <param name="config"><see cref="IConfiguration"/>.</param>
-    /// <returns></returns>
+    /// <returns><see cref="IServiceCollection"/>.</returns>
     public static IServiceCollection AddLogicServices(this IServiceCollection services, IConfiguration config) =>
         services
             .AddProviders()
             .AddCache(config)
             .AddFactories()
-            .AddSettings(config);
+            .AddSettings(config)
+            .AddDispatchers();
 
     /// <summary>
     /// Регистрирует сервисы слоя логики.
     /// </summary>
     /// <param name="services"><see cref="IServiceCollection"/>.</param>
-    /// <returns></returns>
+    /// <returns><see cref="IServiceCollection"/>.</returns>
     private static IServiceCollection AddProviders(this IServiceCollection services) =>
         services
             .AddScoped<IUserProvider, UserProvider>()
@@ -43,7 +46,7 @@ public static class ServiceCollectionExtensions
     /// </summary>
     /// <param name="services"><see cref="IServiceCollection"/>.</param>
     /// <param name="config"><see cref="IConfiguration"/>.</param>
-    /// <returns></returns>
+    /// <returns><see cref="IServiceCollection"/>.</returns>
     private static IServiceCollection AddCache(this IServiceCollection services, IConfiguration config) =>
         services
             .AddStackExchangeRedisCache(options =>
@@ -56,17 +59,26 @@ public static class ServiceCollectionExtensions
     /// Регистрирует фабрики слоя логики.
     /// </summary>
     /// <param name="services"><see cref="IServiceCollection"/>.</param>
-    /// <returns></returns>
+    /// <returns><see cref="IServiceCollection"/>.</returns>
     private static IServiceCollection AddFactories(this IServiceCollection services) =>
         services
             .AddScoped<ICachingPolicyFactory, CachingPolicyFactory>();
+
+    /// <summary>
+    /// Регистрирует диспетчеры слоя логики.
+    /// </summary>
+    /// <param name="services"></param>
+    /// <returns></returns>
+    private static IServiceCollection AddDispatchers(this IServiceCollection services) =>
+        services
+            .AddSingleton<IWebhookDispatcher, WebhookDispatcher>();
 
     /// <summary>
     /// Регистрирует настройки слоя логики.
     /// </summary>
     /// <param name="services"><see cref="IServiceCollection"/>.</param>
     /// <param name="config"><see cref="IConfiguration"/>.</param>
-    /// <returns></returns>
+    /// <returns><see cref="IServiceCollection"/>.</returns>
     private static IServiceCollection AddSettings(this IServiceCollection services, IConfiguration config) =>
         services
             .AddConfigAsSingleton<CachingSettings>(config)

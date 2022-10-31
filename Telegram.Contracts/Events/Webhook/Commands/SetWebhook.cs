@@ -21,5 +21,15 @@ public record struct SetWebhook(
     int? MaxConnections,
     IEnumerable<string>? AllowedUpdates,
     bool? DropPendingUpdates,
-    string? SecretToken) 
-    : IEventEntity;
+    string? SecretToken)
+    : IEventEntity
+{
+    /// <summary>
+    /// Конструктор для webhook'а только с url.
+    /// </summary>
+    /// <param name="url">URL-адрес HTTPS для отправки обновлений.</param>
+    public SetWebhook(string url) 
+        : this(url, null, null, null, null, null)
+    {
+    }
+}

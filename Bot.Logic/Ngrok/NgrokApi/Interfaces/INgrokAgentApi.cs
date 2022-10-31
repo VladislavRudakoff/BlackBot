@@ -15,7 +15,7 @@ public interface INgrokAgentApi
     /// </summary>
     /// <param name="cancellationToken">Маркер отмены.</param>
     /// <returns>Коллекция <see cref="TunnelDetail"/>'s.</returns>
-    public Task<NgrokResponse> GetAllTunnelDetail(CancellationToken cancellationToken = default);
+    public Task<NgrokResponse> GetAllTunnelDetails(CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Получает информацию о туннеле.
@@ -23,7 +23,7 @@ public interface INgrokAgentApi
     /// <param name="tunnelName">Имя туннеля.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
     /// <returns><see cref="TunnelDetail"/>.</returns>
-    public Task<TunnelDetail> GetTunnelDetail(string tunnelName, CancellationToken cancellationToken = default);
+    public Task<TunnelDetail> GetTunnelDetails(string tunnelName, CancellationToken cancellationToken = default);
 
     /// <summary>
     /// Получает публичный Url туннеля.
@@ -48,13 +48,4 @@ public interface INgrokAgentApi
     /// <param name="cancellationToken">Маркер отмены.</param>
     /// <returns></returns>
     public Task StopTunnel(string tunnelName, CancellationToken cancellationToken = default);
-
-    /// <summary>
-    /// Возвращает список всех полученных HTTP-запросов.
-    /// </summary>
-    /// <param name="limit">Максимальное количество возвращаемых запросов.</param>
-    /// <param name="tunnelName">Имя туннеля, запросы к которому требуется получить.</param>
-    /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns></returns>
-    public Task GetListRequests(int limit, string tunnelName, CancellationToken cancellationToken = default);
 }

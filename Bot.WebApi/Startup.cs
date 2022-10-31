@@ -4,7 +4,7 @@ using Bot.Data.AppContext;
 using Bot.Logic.Extensions;
 using Bot.Logic.Ngrok.Extensions;
 using Bot.Logic.Ngrok.Settings;
-using Bot.WebApi.HostedServices;
+using Bot.WebApi.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -34,12 +34,12 @@ public class Startup
             {
                 options.SerializerSettings.ContractResolver = new DefaultContractResolver
                 {
-                    NamingStrategy = new CamelCaseNamingStrategy()
+                    NamingStrategy = new SnakeCaseNamingStrategy()
                 };
                 options.SerializerSettings.Converters.Add(new StringEnumConverter());
             });
 
-        services.AddHostedService<HostedService>();
+        services.AddWebApiServices();
 
         services.AddOptions();
 

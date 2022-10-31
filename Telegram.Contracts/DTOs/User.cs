@@ -15,7 +15,7 @@
 public record User(
     long Id,
     bool IsBot,
-    string FirstName,
+    string? FirstName,
     string? LastName,
     string? Username,
     string? LanguageCode,
