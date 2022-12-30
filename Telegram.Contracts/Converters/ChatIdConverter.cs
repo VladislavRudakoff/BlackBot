@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Telegram.Contracts.DTOs.Chats;
 
 namespace Telegram.Contracts.Converters;
 

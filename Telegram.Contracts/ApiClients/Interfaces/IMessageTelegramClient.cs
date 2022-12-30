@@ -1,9 +1,30 @@
-﻿using Telegram.Contracts.DTOs;
-using Telegram.Contracts.DTOs.Files;
-using Telegram.Contracts.DTOs.Keyboard;
-using Telegram.Contracts.DTOs.Messages;
-using Telegram.Contracts.DTOs.Pools;
-using Telegram.Contracts.DTOs.Stickers;
+﻿using Files;
+using Keyboard;
+using Messages;
+using Messages;
+using Messages;
+using Messages;
+using Messages;
+using Messages;
+using Messages;
+using Messages;
+using Messages;
+using Messages;
+using Messages;
+using Messages;
+using Messages;
+using Messages;
+using Messages;
+using Messages;
+using Messages;
+using Messages;
+using Messages;
+using Messages;
+using Messages;
+using Messages;
+using Messages;
+using Pools;
+using Stickers;
 using Telegram.Contracts.Events;
 using Telegram.Contracts.Events.Chats.Commands.Messages;
 using Telegram.Contracts.Events.Chats.Commands.Stickers;
@@ -32,7 +53,7 @@ public interface IMessageTelegramClient
     /// </summary>
     /// <param name="sendMessage"><see cref="SendMessage"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns>Отправленное <b><see cref="Message"/>.</b></returns>
+    /// <returns>Отправленное <b><see cref="FluentBot.Domain.Entities.Messages.Message"/>.</b></returns>
     Task<TelegramResponse<Message>?> SendMessageAsync(SendMessage sendMessage, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -40,7 +61,7 @@ public interface IMessageTelegramClient
     /// </summary>
     /// <param name="forwardMessage"><see cref="ForwardMessage"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns>Отправленное <b><see cref="Message"/>.</b></returns>
+    /// <returns>Отправленное <b><see cref="FluentBot.Domain.Entities.Messages.Message"/>.</b></returns>
     Task<TelegramResponse<Message>?> ForwardMessageAsync(ForwardMessage forwardMessage, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -48,7 +69,7 @@ public interface IMessageTelegramClient
     /// </summary>
     /// <param name="copyMessage"><see cref="CopyMessage"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns>Идентификатор отправленного <b><see cref="Message"/>.</b></returns>
+    /// <returns>Идентификатор отправленного <b><see cref="FluentBot.Domain.Entities.Messages.Message"/>.</b></returns>
     Task<TelegramResponse<MessageIdentifier>?> CopyMessageAsync(CopyMessage copyMessage, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -56,7 +77,7 @@ public interface IMessageTelegramClient
     /// </summary>
     /// <param name="sendPhoto"><see cref="SendPhoto"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns>Отправленное <b><see cref="Message"/>.</b></returns>
+    /// <returns>Отправленное <b><see cref="FluentBot.Domain.Entities.Messages.Message"/>.</b></returns>
     Task<TelegramResponse<Message>?> SendPhotoAsync(SendPhoto sendPhoto, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -66,7 +87,7 @@ public interface IMessageTelegramClient
     /// </summary>
     /// <param name="sendAudio"><see cref="SendAudio"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns>Отправленное <b><see cref="Message"/>.</b></returns>
+    /// <returns>Отправленное <b><see cref="FluentBot.Domain.Entities.Messages.Message"/>.</b></returns>
     Task<TelegramResponse<Message>?> SendAudioAsync(SendAudio sendAudio, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -74,7 +95,7 @@ public interface IMessageTelegramClient
     /// </summary>
     /// <param name="sendFile"><see cref="SendFile"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns>Отправленное <b><see cref="Message"/>.</b></returns>
+    /// <returns>Отправленное <b><see cref="FluentBot.Domain.Entities.Messages.Message"/>.</b></returns>
     Task<TelegramResponse<Message>?> SendFileAsync(SendFile sendFile, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -82,7 +103,7 @@ public interface IMessageTelegramClient
     /// </summary>
     /// <param name="sendVideo"><see cref="SendVideo"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns>Отправленное <b><see cref="Message"/>.</b></returns>
+    /// <returns>Отправленное <b><see cref="FluentBot.Domain.Entities.Messages.Message"/>.</b></returns>
     Task<TelegramResponse<Message>?> SendVideoAsync(SendVideo sendVideo, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -90,7 +111,7 @@ public interface IMessageTelegramClient
     /// </summary>
     /// <param name="sendAnimation"><see cref="SendAnimation"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns>Отправленное <b><see cref="Message"/>.</b></returns>
+    /// <returns>Отправленное <b><see cref="FluentBot.Domain.Entities.Messages.Message"/>.</b></returns>
     Task<TelegramResponse<Message>?> SendAnimationAsync(SendAnimation sendAnimation, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -99,7 +120,7 @@ public interface IMessageTelegramClient
     /// </summary>
     /// <param name="sendVoice"><see cref="SendVoice"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns>Отправленное <b><see cref="Message"/>.</b></returns>
+    /// <returns>Отправленное <b><see cref="FluentBot.Domain.Entities.Messages.Message"/>.</b></returns>
     Task<TelegramResponse<Message>?> SendVoiceAsync(SendVoice sendVoice, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -107,7 +128,7 @@ public interface IMessageTelegramClient
     /// </summary>
     /// <param name="sendVideoNote"><see cref="SendVideoNote"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns>Отправленное <b><see cref="Message"/>.</b></returns>
+    /// <returns>Отправленное <b><see cref="FluentBot.Domain.Entities.Messages.Message"/>.</b></returns>
     Task<TelegramResponse<Message>?> SendVideoNoteAsync(SendVideoNote sendVideoNote, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -115,7 +136,7 @@ public interface IMessageTelegramClient
     /// </summary>
     /// <param name="sendMediaGroup"><see cref="SendMediaGroup"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns>Коллекция отправленных <b><see cref="Message"/>.</b></returns>
+    /// <returns>Коллекция отправленных <b><see cref="FluentBot.Domain.Entities.Messages.Message"/>.</b></returns>
     Task<TelegramResponse<IEnumerable<Message>>?> SendMediaGroupAsync(SendMediaGroup sendMediaGroup, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -123,7 +144,7 @@ public interface IMessageTelegramClient
     /// </summary>
     /// <param name="sendLocation"><see cref="SendLocation"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns>Отправленное <b><see cref="Message"/>.</b></returns>
+    /// <returns>Отправленное <b><see cref="FluentBot.Domain.Entities.Messages.Message"/>.</b></returns>
     Task<TelegramResponse<Message>?> SendLocationAsync(SendLocation sendLocation, CancellationToken cancellationToken = default);
 
     //TODO: Разобраться с Inline аналогом метода. 
@@ -133,7 +154,7 @@ public interface IMessageTelegramClient
     /// </summary>
     /// <param name="editLiveLocation"><see cref="EditMessageLiveLocation"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns>Отредактированное <b><see cref="Message"/>.</b></returns>
+    /// <returns>Отредактированное <b><see cref="FluentBot.Domain.Entities.Messages.Message"/>.</b></returns>
     Task<TelegramResponse<Message>?> EditLiveLocationAsync(EditMessageLiveLocation editLiveLocation, CancellationToken cancellationToken = default);
 
     //TODO: Разобраться с Inline аналогом метода. 
@@ -142,7 +163,7 @@ public interface IMessageTelegramClient
     /// </summary>
     /// <param name="stopLiveLocation"><see cref="StopMessageLiveLocation"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns>Отредактированное <b><see cref="Message"/>.</b></returns>
+    /// <returns>Отредактированное <b><see cref="FluentBot.Domain.Entities.Messages.Message"/>.</b></returns>
     Task<TelegramResponse<Message>?> StopLiveLocationAsync(StopMessageLiveLocation stopLiveLocation, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -150,7 +171,7 @@ public interface IMessageTelegramClient
     /// </summary>
     /// <param name="sendVenue"><see cref="SendVenue"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns>Отправленное <b><see cref="Message"/>.</b></returns>
+    /// <returns>Отправленное <b><see cref="FluentBot.Domain.Entities.Messages.Message"/>.</b></returns>
     Task<TelegramResponse<Message>?> SendVenueAsync(SendVenue sendVenue, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -158,7 +179,7 @@ public interface IMessageTelegramClient
     /// </summary>
     /// <param name="sendContact"><see cref="SendContact"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns>Отправленное <b><see cref="Message"/>.</b></returns>
+    /// <returns>Отправленное <b><see cref="FluentBot.Domain.Entities.Messages.Message"/>.</b></returns>
     Task<TelegramResponse<Message>?> SendContactAsync(SendContact sendContact, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -166,7 +187,7 @@ public interface IMessageTelegramClient
     /// </summary>
     /// <param name="sendPool"><see cref="SendPoll"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns>Отправленное <b><see cref="Message"/>.</b></returns>
+    /// <returns>Отправленное <b><see cref="FluentBot.Domain.Entities.Messages.Message"/>.</b></returns>
     Task<TelegramResponse<Message>?> SendPollAsync(SendPoll sendPool, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -174,7 +195,7 @@ public interface IMessageTelegramClient
     /// </summary>
     /// <param name="stopPoll"><see cref="StopPoll"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns>Остановленный <b><see cref="Poll"/>.</b></returns>
+    /// <returns>Остановленный <b><see cref="FluentBot.Domain.Entities.Pools.Poll"/>.</b></returns>
     Task<TelegramResponse<Poll>?> StopPollAsync(StopPoll stopPoll, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -182,7 +203,7 @@ public interface IMessageTelegramClient
     /// </summary>
     /// <param name="sendDice"><see cref="SendDice"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns>Отправленное <b><see cref="Message"/>.</b></returns>
+    /// <returns>Отправленное <b><see cref="FluentBot.Domain.Entities.Messages.Message"/>.</b></returns>
     Task<TelegramResponse<Message>?> SendDiceAsync(SendDice sendDice, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -191,7 +212,7 @@ public interface IMessageTelegramClient
     /// </summary>
     /// <param name="getFile"><see cref="GetFile"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns><b><see cref="FileForDownload"/>.</b></returns>
+    /// <returns><b><see cref="FluentBot.Domain.Entities.Files.FileForDownload"/>.</b></returns>
     Task<TelegramResponse<FileForDownload>?> GetFileAsync(GetFile getFile, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -219,7 +240,7 @@ public interface IMessageTelegramClient
     Task<TelegramResponse<bool>?> UnpinAllChatMessagesAsync(UnpinAllChatMessages unpinAllChatMessages, CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Отправляет ответ на <see cref="CallbackQuery"/>. Ответ отобразится в виде уведомления в верхней части экрана, либо в виде предупреждения.
+    /// Отправляет ответ на <see cref="FluentBot.Domain.Entities.Keyboard.CallbackQuery"/>. Ответ отобразится в виде уведомления в верхней части экрана, либо в виде предупреждения.
     /// </summary>
     /// <param name="answerCallbackQuery"><see cref="AnswerCallbackQuery"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
@@ -237,7 +258,7 @@ public interface IMessageTelegramClient
     /// </summary>
     /// <param name="editMessageText"><see cref="EditMessageText"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns>Отредактированное <b><see cref="Message"/>.</b></returns>
+    /// <returns>Отредактированное <b><see cref="FluentBot.Domain.Entities.Messages.Message"/>.</b></returns>
     Task<TelegramResponse<Message>?> EditMessageTextAsync(EditMessageText editMessageText, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -245,7 +266,7 @@ public interface IMessageTelegramClient
     /// </summary>
     /// <param name="editMessageCaption"><see cref="EditMessageCaption"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns>Отредактированное <b><see cref="Message"/>.</b></returns>
+    /// <returns>Отредактированное <b><see cref="FluentBot.Domain.Entities.Messages.Message"/>.</b></returns>
     Task<TelegramResponse<Message>?> EditMessageCaptionAsync(EditMessageCaption editMessageCaption, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -254,7 +275,7 @@ public interface IMessageTelegramClient
     /// <remarks>Если сообщение является частью альбома, то его можно изменить только на аналогичный тип сообщения(фото только на фото, видео на видео и т.д.).</remarks>
     /// <param name="editMessageMedia"><see cref="EditMessageMedia"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns>Отредактированное <b><see cref="Message"/>.</b></returns>
+    /// <returns>Отредактированное <b><see cref="FluentBot.Domain.Entities.Messages.Message"/>.</b></returns>
     Task<TelegramResponse<Message>?> EditMessageMediaAsync(EditMessageMedia editMessageMedia, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -262,7 +283,7 @@ public interface IMessageTelegramClient
     /// </summary>
     /// <param name="editMessageReplyMarkup"><see cref="EditMessageReplyMarkup"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns>Отредактированное <b><see cref="Message"/>.</b></returns>
+    /// <returns>Отредактированное <b><see cref="FluentBot.Domain.Entities.Messages.Message"/>.</b></returns>
     Task<TelegramResponse<Message>?> EditMessageReplyMarkupAsync(EditMessageReplyMarkup editMessageReplyMarkup, CancellationToken cancellationToken = default);
 
     //  Ʌ
@@ -293,7 +314,7 @@ public interface IMessageTelegramClient
     /// </summary>
     /// <param name="sendSticker"><see cref="SendSticker"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns>Отправленное <b><see cref="Message"/>.</b></returns>
+    /// <returns>Отправленное <b><see cref="FluentBot.Domain.Entities.Messages.Message"/>.</b></returns>
     Task<TelegramResponse<Message>?> SendStickerAsync(SendSticker sendSticker, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -301,7 +322,7 @@ public interface IMessageTelegramClient
     /// </summary>
     /// <param name="getStickerSet"><see cref="GetStickerSet"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns><b><see cref="StickerSet"/>.</b></returns>
+    /// <returns><b><see cref="FluentBot.Domain.Entities.Stickers.StickerSet"/>.</b></returns>
     Task<TelegramResponse<StickerSet>?> GetStickerSetAsync(GetStickerSet getStickerSet, CancellationToken cancellationToken = default);
 
     /// <summary>

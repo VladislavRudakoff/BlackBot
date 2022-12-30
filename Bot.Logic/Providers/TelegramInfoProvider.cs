@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Bot.Logic.Providers.Interfaces;
 using Telegram.Contracts.ApiClients.Interfaces;
-using Telegram.Contracts.DTOs;
 
 namespace Bot.Logic.Providers;
 

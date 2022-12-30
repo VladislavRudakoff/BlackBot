@@ -1,9 +1,4 @@
 ﻿using Telegram.Contracts.ApiClients.Interfaces;
-using Telegram.Contracts.DTOs;
-using Telegram.Contracts.DTOs.Files;
-using Telegram.Contracts.DTOs.Messages;
-using Telegram.Contracts.DTOs.Pools;
-using Telegram.Contracts.DTOs.Stickers;
 using Telegram.Contracts.Events;
 using Telegram.Contracts.Events.Chats.Commands.Messages;
 using Telegram.Contracts.Events.Chats.Commands.Stickers;

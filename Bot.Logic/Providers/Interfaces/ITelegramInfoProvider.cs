@@ -1,6 +1,5 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Telegram.Contracts.DTOs;
 
 namespace Bot.Logic.Providers.Interfaces;
 

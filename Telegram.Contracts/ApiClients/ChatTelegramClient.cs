@@ -1,7 +1,4 @@
 ﻿using Telegram.Contracts.ApiClients.Interfaces;
-using Telegram.Contracts.DTOs;
-using Telegram.Contracts.DTOs.Chats;
-using Telegram.Contracts.DTOs.Chats.ChatMembers;
 using Telegram.Contracts.Events.Chats.Commands;
 using Telegram.Contracts.Events.Chats.Commands.InviteLinks;
 using Telegram.Contracts.Events.Chats.Commands.Requests;

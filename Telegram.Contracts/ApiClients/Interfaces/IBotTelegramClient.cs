@@ -1,14 +1,13 @@
-﻿using Telegram.Contracts.DTOs;
-using Telegram.Contracts.DTOs.Chats;
-using Telegram.Contracts.DTOs.Commands;
-using Telegram.Contracts.DTOs.Menu;
-using Telegram.Contracts.DTOs.Webhook;
+﻿using Chats;
+using Commands;
+using Menu;
 using Telegram.Contracts.Events.BotCommands.Commands;
 using Telegram.Contracts.Events.BotCommands.Queries;
 using Telegram.Contracts.Events.Chats.Commands;
 using Telegram.Contracts.Events.Chats.Commands.Buttons;
 using Telegram.Contracts.Events.Chats.Queries.Buttons;
 using Telegram.Contracts.Events.Webhook.Commands;
+using Webhook;
 
 namespace Telegram.Contracts.ApiClients.Interfaces;
 
@@ -45,7 +44,7 @@ public interface IBotTelegramClient
     /// </summary>
     /// <param name="getMyCommands"><see cref="GetMyCommands"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns><b>Коллекция <see cref="BotCommand"/>.</b></returns>
+    /// <returns><b>Коллекция <see cref="FluentBot.Domain.Entities.Commands.BotCommand"/>.</b></returns>
     Task<TelegramResponse<IEnumerable<BotCommand>>?> GetCommandsAsync(GetMyCommands getMyCommands, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -61,7 +60,7 @@ public interface IBotTelegramClient
     /// </summary>
     /// <param name="getChatMenuButton"><see cref="GetChatMenuButton"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns><b><see cref="MenuButton"/>.</b></returns>
+    /// <returns><b><see cref="FluentBot.Domain.Entities.Menu.MenuButton"/>.</b></returns>
     Task<TelegramResponse<MenuButton>?> GetChatMenuButtonAsync(GetChatMenuButton getChatMenuButton, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -89,7 +88,7 @@ public interface IBotTelegramClient
     /// </summary>
     /// <param name="getDefaultAdministratorRights"><see cref="GetMyDefaultAdministratorRights"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns><b><see cref="ChatAdministratorRights"/>.</b></returns>
+    /// <returns><b><see cref="FluentBot.Domain.Entities.Chats.ChatAdministratorRights"/>.</b></returns>
     Task<TelegramResponse<ChatAdministratorRights>?> GetDefaultAdministratorRightsAsync(
         GetMyDefaultAdministratorRights getDefaultAdministratorRights, 
         CancellationToken cancellationToken = default);
@@ -114,6 +113,6 @@ public interface IBotTelegramClient
     /// Получает текущую информацию о webhook.
     /// </summary>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns><b><see cref="WebhookInfo"/>.</b></returns>
+    /// <returns><b><see cref="FluentBot.Domain.Entities.Webhook.WebhookInfo"/>.</b></returns>
     Task<TelegramResponse<WebhookInfo>?> GetWebhookInfoAsync(CancellationToken cancellationToken = default);
 }
