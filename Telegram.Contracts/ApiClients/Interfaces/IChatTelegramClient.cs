@@ -1,6 +1,9 @@
-﻿using Telegram.Contracts.DTOs;
-using Telegram.Contracts.DTOs.Chats;
-using Telegram.Contracts.DTOs.Chats.ChatMembers;
+﻿using ChatMembers;
+using ChatMembers;
+using Chats;
+using Chats;
+using Chats;
+using Chats;
 using Telegram.Contracts.Events.Chats.Commands;
 using Telegram.Contracts.Events.Chats.Commands.InviteLinks;
 using Telegram.Contracts.Events.Chats.Commands.Requests;
@@ -95,7 +98,7 @@ public interface IChatTelegramClient
     /// </summary>
     /// <param name="createChatInviteLink"><see cref="CreateChatInviteLink"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns><b><see cref="ChatInviteLink"/>.</b></returns>
+    /// <returns><b><see cref="FluentBot.Domain.Entities.Chats.ChatInviteLink"/>.</b></returns>
     Task<TelegramResponse<ChatInviteLink>?> CreateChatInviteLinkAsync(CreateChatInviteLink createChatInviteLink, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -103,7 +106,7 @@ public interface IChatTelegramClient
     /// </summary>
     /// <param name="editChatInviteLink"><see cref="EditChatInviteLink"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns><b><see cref="ChatInviteLink"/>.</b></returns>
+    /// <returns><b><see cref="FluentBot.Domain.Entities.Chats.ChatInviteLink"/>.</b></returns>
     Task<TelegramResponse<ChatInviteLink>?> EditChatInviteLinkAsync(EditChatInviteLink editChatInviteLink, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -111,7 +114,7 @@ public interface IChatTelegramClient
     /// </summary>
     /// <param name="revokeChatInviteLink"><see cref="RevokeChatInviteLink"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns><b><see cref="ChatInviteLink"/>.</b></returns>
+    /// <returns><b><see cref="FluentBot.Domain.Entities.Chats.ChatInviteLink"/>.</b></returns>
     Task<TelegramResponse<ChatInviteLink>?> RevokeChatInviteLinkAsync(RevokeChatInviteLink revokeChatInviteLink, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -159,7 +162,7 @@ public interface IChatTelegramClient
     /// </summary>
     /// <param name="getChat"><see cref="GetChat"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns><b><see cref="Chat"/>.</b></returns>
+    /// <returns><b><see cref="FluentBot.Domain.Entities.Chats.Chat"/>.</b></returns>
     Task<TelegramResponse<Chat>?> GetChatAsync(GetChat getChat, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -167,7 +170,7 @@ public interface IChatTelegramClient
     /// </summary>
     /// <param name="getChatAdministrators"><see cref="GetChatAdministrators"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns><b>Коллекция <see cref="ChatMember"/>.</b></returns>
+    /// <returns><b>Коллекция <see cref="FluentBot.Domain.Entities.Chats.ChatMembers.ChatMember"/>.</b></returns>
     Task<TelegramResponse<IEnumerable<ChatMember>>?> GetChatAdministratorsAsync(GetChatAdministrators getChatAdministrators, CancellationToken cancellationToken = default);
 
     /// <summary>
@@ -183,7 +186,7 @@ public interface IChatTelegramClient
     /// </summary>
     /// <param name="getChatMember"><see cref="GetChatMember"/>.</param>
     /// <param name="cancellationToken">Маркер отмены.</param>
-    /// <returns><b><see cref="ChatMember"/>.</b></returns>
+    /// <returns><b><see cref="FluentBot.Domain.Entities.Chats.ChatMembers.ChatMember"/>.</b></returns>
     Task<TelegramResponse<ChatMember>?> GetChatMemberAsync(GetChatMember getChatMember, CancellationToken cancellationToken = default);
 
     /// <summary>

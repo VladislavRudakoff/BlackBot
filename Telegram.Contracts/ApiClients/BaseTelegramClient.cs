@@ -1,5 +1,4 @@
 ﻿using Bot.Common.Extensions;
-using Telegram.Contracts.DTOs;
 using Telegram.Contracts.Events.Interfaces;
 using Telegram.Contracts.Settings;
 

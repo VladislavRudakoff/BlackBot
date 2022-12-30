@@ -1,0 +1,1 @@
+global using FluentBot.Domain.UseCases.Events.Interfaces;

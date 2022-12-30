@@ -1,10 +1,5 @@
 ﻿using Bot.Common.Extensions;
 using Telegram.Contracts.ApiClients.Interfaces;
-using Telegram.Contracts.DTOs;
-using Telegram.Contracts.DTOs.Chats;
-using Telegram.Contracts.DTOs.Commands;
-using Telegram.Contracts.DTOs.Menu;
-using Telegram.Contracts.DTOs.Webhook;
 using Telegram.Contracts.Events.BotCommands.Commands;
 using Telegram.Contracts.Events.BotCommands.Queries;
 using Telegram.Contracts.Events.Chats.Commands;

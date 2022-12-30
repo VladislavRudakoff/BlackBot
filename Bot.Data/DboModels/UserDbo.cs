@@ -1,6 +1,4 @@
-﻿using Bot.Data.Enums;
-
-namespace Bot.Data.DboModels;
+﻿namespace Bot.Data.DboModels;
 
 /// <summary>
 /// Пользователь.

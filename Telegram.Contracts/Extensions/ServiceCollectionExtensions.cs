@@ -14,7 +14,6 @@ public static class ServiceCollectionExtensions
             .RegisterTelegramApiClients(config)
             .RegisterTelegramApiSettings(config);
 
-
     private static IServiceCollection RegisterTelegramApiClients(this IServiceCollection services, IConfiguration config)
     {
         TelegramClientSettings clientSettings = config.BindConfig<TelegramClientSettings>();

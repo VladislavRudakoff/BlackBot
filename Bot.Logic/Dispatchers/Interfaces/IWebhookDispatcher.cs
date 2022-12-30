@@ -1,6 +1,5 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using Telegram.Contracts.DTOs.Webhook;
 
 namespace Bot.Logic.Dispatchers.Interfaces;
 
